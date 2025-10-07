@@ -1,0 +1,46 @@
+@use "sass:math";
+/*
+  Contents
+-----------------------------------------------------*/
+
+.l-contents {
+  font-size: 1.14286rem;
+  @include mq(desk) {
+    width: calc(100% - 224px);
+    margin-left: auto;
+  }
+
+  &__box {
+    background-color: $color-white;
+        padding: 4rem 3rem;
+
+    @include mq(desk) {
+      padding: 3rem;
+    }
+
+    @include mq(l-lap) {
+      padding: 4rem 3rem;
+    }
+
+    &.-grayLine {
+      border: 1px solid $color-gray2;
+    }
+  }
+
+  &__card {
+    &.-flow {
+      @include mq(l-lap) {
+        margin: 2.5rem 0 3.5rem;
+      }
+    }
+  }
+
+  &__footerInner {
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include mq(lap) {
+      display: block;
+    }
+  }
+}

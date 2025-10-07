@@ -1,0 +1,239 @@
+@use "sass:math";
+/*
+  flow
+*/
+
+.p-flow {
+  margin: 1.5rem 0 3rem;
+
+  @include mq(lap) {
+    margin: 2rem 0 4rem;
+  }
+
+  &__inner {
+    @include mq(lap) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    &Content {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      border: 1px solid #eaeaea;
+      padding: 0.75rem 0.75rem 1rem 0.75rem;
+
+      @include mq(lap) {
+        width: calc(50% - 0.5rem);
+        padding: 1rem 1rem 1.25rem 1rem;
+        margin-top: 1rem;
+      }
+
+      figure {
+        margin-right: 1rem;
+      }
+
+      &:first-child {
+        border: 1px solid $accent-color;
+      }
+
+      a {
+        color: $accent-color;
+      }
+
+      &.-buy {
+        @include mq(lap) {
+          min-height: 171px;
+        }
+      }
+    }
+
+    dl {
+      position: relative;
+      width: 100%;
+
+      dt {
+        margin-bottom: 3px;
+
+        em {
+          font-weight: 500;
+          display: inline-block;
+        }
+
+        .number {
+          font-family: $font-set-en;
+          font-weight: 500;
+          display: block;
+          font-size: 1.14286rem;
+          color: $accent-color;
+          margin-right: 0.5rem;
+
+          @include mq(lap) {
+            display: inline-block;
+          }
+        }
+      }
+
+      dd {
+        font-size: 1rem;;
+
+        .border {
+          border-bottom: 1px solid #c3c1c3;
+        }
+      }
+
+      &:not(:last-child) {
+        &::before {
+          position: absolute;
+          content: "";
+          width: 12px;
+          height: 12px;
+          border-top: 1px solid #c3c1c3;
+          border-right: 1px solid #c3c1c3;
+          bottom: -18px;
+          left: 50%;
+          transform: translateX(-50%) rotate(135deg);
+
+          @include mq(lap) {
+            top: 0;
+            bottom: 0;
+            right: 5px;
+            margin: auto 0;
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+
+  .contanct {
+    margin-top: 1rem;
+    font-size: 1rem;;
+
+    a {
+      color: $accent-color;
+      display: inline-block;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &Sub {
+    &__list {
+      padding-top: 2rem;
+
+      @include mq(lap) {
+        padding-top: 2.5rem;
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: $color-white;
+      border: 1px solid #eaeaea;
+      padding: 1rem 1rem 1.2rem 1rem;
+
+      @include mq(lap) {
+        padding: 1.5rem 1.5rem 1.75rem 1.5rem;
+      }
+
+      .number {
+        color: $accent-color;
+        font-family: $font-set-en;
+        line-height: 1.125;
+        font-weight: 400;
+        text-align: center;
+        display: inline-block;
+        margin-right: 0.25rem;
+        font-size: 1rem;
+
+        @include mq(lap) {
+          font-size: 1.42857rem;
+          margin-right: 1.5rem;
+        }
+
+        em {
+          font-size: 2.57143rem;
+          font-weight: 300;
+          display: block;
+
+          @include mq(lap) {
+            font-size: 3.42857rem;
+          }
+        }
+      }
+
+      dl {
+        width: calc(100% - 4rem);
+        position: relative;
+        font-size: 1rem;
+
+        @include mq(lap) {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        dt {
+          font-weight: 700;
+
+          @include mq(lap) {
+          font-size: 1.285711rem;
+            width: 35%;
+          }
+        }
+
+        dd {
+          margin-top: 5px;
+
+          @include mq(lap) {
+            width: 65%;
+            font-size: 1.14286rem;
+          }
+
+          a {
+            color: $accent-color;
+
+            &:hover {
+              opacity: 0.5;
+            }
+          }
+
+          .note {
+            font-size: 0.86rem;
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+        position: relative;
+
+        @include mq(lap) {
+          margin-bottom: 3rem;
+        }
+
+        &::before {
+          position: absolute;
+          content: "";
+          border-right: 1px solid #4f4d4d;
+          border-top: 1px solid #4f4d4d;
+          transform: translateX(-50%) rotate(135deg);
+          width: 1rem;
+          height: 1rem;
+          bottom: -1.25rem;
+          left: 50%;
+
+          @include mq(lap) {
+            bottom: -1.75rem;
+          }
+        }
+      }
+    }
+  }
+}

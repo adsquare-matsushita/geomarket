@@ -1,0 +1,34 @@
+@use "sass:math";
+
+/*
+  Logo
+*/
+.p-logo,
+.custom-logo-link {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  color: $main-color;
+  font-size: 1.5em;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  background-color: rgba(232, 109, 33, 0.8);
+
+  @include mq(desk) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.8rem 2rem;
+    width: 100%;
+  }
+}
+
+.p-logo {
+  img {
+    max-width: 180px;
+
+    @include mq(desk) {
+      max-width: 100%;
+    }
+  }
+}

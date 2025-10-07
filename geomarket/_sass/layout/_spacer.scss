@@ -1,0 +1,56 @@
+@use "sass:math";
+/*
+  Spacer
+-----------------------------------------------------*/
+
+.l-spacer {
+  padding: 2rem 0;
+
+  @include mq(lap) {
+    padding: 3rem 0;
+  }
+
+  &.-gray {
+    background-color: $base-color;
+  }
+
+  &.-sub {
+    padding: 3rem 0 0 0;
+
+    @include mq(lap) {
+      padding: 6rem 0 0 0;
+    }
+  }
+
+  &.-sizeS {
+    padding: 1.5rem 0;
+
+    @include mq(lap) {
+      padding: 2rem 0;
+    }
+  }
+
+  &.-top {
+    padding-top: 3rem;
+    padding-bottom: 0;
+
+    @include mq(lap) {
+      padding-top: 6rem;
+    }
+  }
+
+  &.-bottom {
+    padding-bottom: 3rem;
+    padding-top: 0;
+
+    @include mq(lap) {
+      padding-bottom: 6rem;
+    }
+  }
+
+  &.-sizel {
+    @include mq(lap) {
+      padding: 4.5rem 0;
+    }
+  }
+}

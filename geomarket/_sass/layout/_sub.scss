@@ -1,0 +1,13 @@
+@use "sass:math";
+/*
+  Sub
+-----------------------------------------------------*/
+
+.l-sub {}
+
+@include mq(tab) {
+  .l-sub {
+    width: percentage(math.div(336px, $content-width));
+    float: right;
+  }
+}

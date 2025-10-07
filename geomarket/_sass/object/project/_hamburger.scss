@@ -1,0 +1,93 @@
+@use "sass:math";
+/*
+  Hamburger
+*/
+$position: right;
+$line-color: $color-white;
+$active-line-color: $color-white;
+
+// setting
+$right: 2.5%;
+$left: auto;
+
+@if $position ==left {
+  $right: auto;
+  $left: 2.5%;
+}
+
+.p-hamburger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: $left;
+  z-index: 2;
+  margin: auto 0;
+  width: 24px;
+  height: 24px;
+  outline: 0;
+  border: 0;
+  transition: all 0.3s ease-in-out;
+
+  background-color: $primary-text-color;
+  height: 100%;
+  width: 64px;
+
+  &__line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    margin: auto;
+    width: 35%;
+    height: 2px;
+    background-color: $line-color;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &__line:before,
+  &__line:after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: inherit;
+    content: "";
+    transition: inherit;
+  }
+
+  &__line:before {
+    top: -7px;
+  }
+
+  &__line:after {
+    top: 7px;
+  }
+
+  @include mq(desk) {
+    display: none;
+  }
+
+  .is-drawerActive & {
+    &__line {
+      background-color: transparent;
+
+      &:before,
+      &:after {
+        top: 0;
+        background-color: $active-line-color;
+      }
+
+      &:before {
+        transform: rotate(-45deg);
+      }
+
+      &:after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

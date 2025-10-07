@@ -1,0 +1,311 @@
+@use "sass:math";
+/*
+  news
+*/
+.p-news {
+  &__inner {
+    position: relative;
+
+    &.-sub {
+      .p-news__listItem a::after {
+        display: none;
+      }
+
+      .p-news__listItem a>span {
+        margin-bottom: 0.5rem;
+      }
+
+      .p-news__listItem a {
+        padding: 0;
+      }
+
+      .p-news__list {
+        // margin-top: 2rem;
+        // @include mq(lap) {
+        //   margin-top: 3rem;
+        // }
+      }
+    }
+  }
+
+  &__cat {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 2rem 0;
+
+    @include mq(lap) {
+      padding: 3.5rem 0 1rem;
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid $color-gray2;
+    }
+
+    &.-main {
+      padding: 3rem 0 2rem;
+
+      @include mq(lap) {
+        padding: 3.5rem 0 1rem;
+      }
+    }
+  }
+
+  &__catItem {
+    border: 1px solid $color-gray2;
+    text-align: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+
+    @include mq(lap) {
+      border: none;
+      padding: 0 1.25rem;
+    }
+
+    &.is-tab {
+      &::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background-color: $accent-color;
+        display: inline-block;
+
+        @include mq(lap) {
+          top: auto;
+          bottom: -1rem;
+        }
+      }
+    }
+
+    span {
+      color: $primary-text-color;
+      font-weight: 700;
+      font-size: 1.14286rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: $primary-text-color;
+      font-weight: 700;
+      display: block;
+
+      &:hover {
+        opacity: 0.5;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+
+  &__button {
+    position: absolute;
+    display: block;
+    color: $accent-color;
+    text-decoration: none;
+    right: 0;
+    top: 8px;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      left: -1.25rem;
+      background-size: contain;
+      background: url(../../assets/images/top/news-icon.svg) no-repeat;
+      background-size: contain;
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+    }
+  }
+
+  &__list {}
+
+  &__listItem {
+    border-bottom: 1px solid $color-gray2;
+    padding: 1rem 0;
+    position: relative;
+    pointer-events: none;
+    font-size: 1rem;
+
+    @include mq(lap) {
+      padding: 1.5rem 0;
+      font-size: 1.14286rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      transform: scale(0, 0);
+      transform-origin: right top;
+      background-color: $accent-color;
+      display: inline-block;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    &:hover {
+      &::before {
+        transform: scale(1, 1);
+        transform-origin: left top;
+      }
+    }
+
+    a {
+      color: $primary-text-color;
+      text-decoration: none;
+      position: relative;
+      display: block;
+      cursor: pointer;
+      pointer-events: auto;
+
+      @include mq(lap) {
+        padding: 0 1rem;
+      }
+
+      &:hover {
+        i {
+          &::after {
+            animation: slide 0.6s ease-in-out 0.2s;
+          }
+        }
+      }
+
+      i {
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        right: 0;
+        width: 20px;
+        height: 16px;
+        overflow: hidden;
+
+        &::after {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          margin: auto 0;
+          background: url(../../assets/images/common/arrow-orange.svg) no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 16px;
+          display: inline-block;
+          overflow: hidden;
+
+          @include mq(lap) {
+            right: 1rem;
+          }
+        }
+      }
+
+      &>span {
+        @include mq(lap) {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      time {
+        font-family: $font-set-en;
+        font-weight: 500;
+
+        @include mq(lap) {
+          display: block;
+        }
+      }
+
+      .cat {
+        display: inline-block;
+        margin-left: 0.5rem;
+
+        @include mq(lap) {
+          margin: 0 1.5rem;
+        }
+      }
+
+      h3 {
+        font-weight: 700;
+        margin-top: 0.25rem;
+        width: 92%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @include mq(lap) {
+          width: 65%;
+          margin-top: 0;
+        }
+      }
+    }
+
+    @include mq(lap) {}
+  }
+
+  &__listContent {
+    // margin-top: 1rem;
+    // display: -webkit-box;
+    // -webkit-box-orient: vertical;
+    // -webkit-line-clamp: 2;
+    // overflow: hidden;
+  }
+
+}
+
+.archive.category-information,
+.archive.category-sale,
+.archive.category-stock,
+.archive.category-campaign {
+  .p-news__listItem {
+    margin-top: 1rem;
+
+    .p-news__listContent {
+      overflow: hidden;
+      position: relative;
+
+      a {
+        display: block;
+      }
+
+      &_img {
+        flex-shrink: 0;
+        width: 100%;
+        margin: 1rem 0;
+      }
+
+      &_text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+
+        img {
+          display: none;
+        }
+      }
+    }
+
+    @include mq(tab) {
+      .p-news__listContent {
+        margin-top: 1rem;
+
+        &_img {
+          width: 820px;
+          margin: 0 0 1rem;
+        }
+      }
+    }
+  }
+}

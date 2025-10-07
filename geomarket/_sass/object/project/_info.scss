@@ -1,0 +1,53 @@
+@use "sass:math";
+/*
+  Button
+*/
+
+.p-info {
+  border-bottom: 1px solid $color-gray2;
+
+  &__wrap {
+    padding-top: 1rem;
+    position: relative;
+    padding-bottom: 4rem;
+
+    @include mq(lap) {
+      padding-bottom: 0;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-end;
+    }
+
+    &::before {
+      content: "";
+      bottom: 4rem;
+      position: absolute;
+      width: 100%;
+      height: 150px;
+      background-color: #f4f4f4;
+      display: inline-block;
+      z-index: -1;
+
+      @include mq(lap) {
+        width: 95%;
+        right: 0;
+        bottom: 7px;
+        height: 220px;
+      }
+    }
+
+    @include mq(lap) {}
+  }
+
+  &__title {
+    margin-top: 10px;
+    color: #4f4d4d;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+}
+.p-info-other{
+  border-top: 1px solid $color-gray2;
+  border-bottom: 1px solid $color-gray2;
+  background-color: #f4f4f4;
+}

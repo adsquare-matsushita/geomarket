@@ -1,0 +1,57 @@
+@use "sass:math";
+/*
+  Main
+-----------------------------------------------------*/
+
+.l-main {
+  clear: both;
+}
+
+@include mq(tab) {
+  .l-main {
+    width: percentage(math.div(824px, $content-width));
+    float: left;
+  }
+
+  .l-main.-single {
+    width: auto;
+    float: none;
+  }
+}
+
+// sp,pcの切り替え
+.sp-hide {
+  display: none;
+
+  @include mq(lap) {
+    display: inline-block;
+  }
+}
+
+// tabのみ
+.lap-onlyview {
+  display: none;
+
+  @include mq(lap) {
+    display: inline-block;
+  }
+  @include mq(l-lap) {
+    display: none;
+  }
+}
+
+.teab-hid {
+  display: none;
+
+  @include mq(desk) {
+    display: inline-block;
+  }
+}
+
+.pc-hide {
+  display: inline-block;
+
+  @include mq(lap) {
+    display: none;
+  }
+}
