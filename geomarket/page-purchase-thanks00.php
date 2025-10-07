@@ -10,6 +10,8 @@ get_header();
   if( $_GET['post_id'] ){
     $id = $_GET['post_id'];
     update_field( 'select_goods', 'sould', $id );
+
+
   }
 ?>
 

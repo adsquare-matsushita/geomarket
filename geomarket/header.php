@@ -29,8 +29,7 @@
   <?php wp_head(); ?>
 
   <!-- company style -->
-  <?php if (is_page('company')): // Company 
-  ?>
+  <?php if (is_page('company')): // Company ?>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/company.css">
   <?php endif; ?>
 
@@ -104,6 +103,7 @@
           <a href="<?php echo esc_url(home_url()); ?>" class="p-logo"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/main-logo.svg" alt=""></a>
         </h1>
       </div>
+      <!-- /.p-header__info -->
       <nav class="p-header__nav">
         <h2 class="screen-reader-text">サイト内メニュー</h2>
         <button class="js-drawer p-hamburger" aria-controls="globalNav" aria-expanded="false">
@@ -123,6 +123,7 @@
               <li class="p-globalNav__innerList-item c-child"><a href="<?php echo esc_url(home_url()); ?>/information/campaign/">キャンペーン</a></li>
               <li class="p-globalNav__innerList-item c-child"><a href="<?php echo esc_url(home_url()); ?>/information/stock/">入荷情報</a></li>
               <li class="p-globalNav__innerList-item c-child"><a href="<?php echo esc_url(home_url()); ?>/information/sale/">販売情報</a></li>
+              <li class="p-globalNav__innerList-item"><a href="<?php echo esc_url(home_url()); ?>/useful">お役立ち情報</a></li>
               <li class="p-globalNav__innerList-item -gbn-contact"><a href="/contact/">お問い合わせ</a></li>
               <li class="p-globalNav__innerList-item -sns-icons">
                 <ul>
@@ -136,11 +137,15 @@
         </ul>
       </nav>
     </div>
+    <!-- /.l-header__wrap -->
+    <!-- /.p-header__inner -->
     <div class="p-header__bottom"></div>
+    <!-- 20231102 -->
     <script>
-      var myThemeParams = {
-        homeURL: '<?php echo esc_url(home_url()); ?>',
-        themeOptions: <?php echo json_encode(get_theme_mod('mytheme_options', false)); ?>,
-      };
-    </script>
+  var myThemeParams = {
+    homeURL: '<?php echo esc_url(home_url()); ?>',
+    themeOptions: <?php echo json_encode(get_theme_mod('mytheme_options', false)); ?>,
+  };
+</script>
+<!-- 20231102 -->
   </header>

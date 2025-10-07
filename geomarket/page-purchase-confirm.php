@@ -60,8 +60,10 @@ get_header();
                     <?php echo"PENTAX" ?>
                     <?php elseif( $maker == 'nikon' ): ?>
                     <?php echo"NIKON" ?>
-                    <?php elseif( $maker == 'ti' ): ?>
-                    <?php echo"TIアサヒ" ?>
+                    <?php elseif ($maker == 'trimble') : ?>
+                      <?php echo "ニコントリンブル" ?>
+                    <?php elseif ($maker == 'ti-asahi') : ?>
+                      <?php echo "TIアサヒ" ?>
                     <?php elseif( $maker == 'other' ): ?>
                     <?php echo"その他" ?>
                     <?php endif; ?></dd>

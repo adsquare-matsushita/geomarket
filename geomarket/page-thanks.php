@@ -36,21 +36,6 @@
           <!-- <a href="<?php echo esc_url( home_url( ) ); ?>">トップページへ</a> -->
         </div>
 
-        <!-- 無料査定のお申し込み -->
-        <?php elseif(strstr($url,'assessment-2')): ?>
-        <h2 class="c-heading -main">無料査定のお申込みが完了しました。</h2>
-
-        <div class="p-contact__description">
-          この度はお申込みいただき誠にありがとうございます。<br>
-          お申込み内容を確認後、お返事をさしあげますので少々お待ちくださいませ。<br>
-          なお、自動返信メールを送信しております。自動返信メールをご確認いただけない場合は、<br>
-          お申込みができていない可能性がございますので<br>
-          お手数ですが、再度お申込みください。<br>
-          今後とも測量機器総合マーケットGEOMARKETをよろしくお願いいたします。
-
-          <!-- <a href="<?php echo esc_url( home_url( ) ); ?>">トップページへ</a> -->
-        </div>
-
 
         <?php elseif(strstr($url,'purchase')): ?>
 

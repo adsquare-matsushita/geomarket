@@ -14,7 +14,7 @@
               <h3>測量機器リユース販売</h3>
               <!-- <p class="c-heading__h3Detail">ーJSIMA認定検査員による点検済安心機器・オンライン専門店だからこその安心価格ー</p> -->
               <p class="p-hero-sub__text ">
-                GEOMARKETでは、最新の3Dスキャナーから信頼性の高いモータードライブトータルステーション、さらには定評のあるワンマンセットまで、品質に妥協することなく、幅広い機器を取り揃えています。貴社のニーズに合わせて最適な商品をお選びいただき、業務効率化とコスト削減を実現してみませんか？
+                GEOMARKETでは、最新の3Dスキャナから信頼性の高いモータードライブトータルステーション、さらには定評のあるワンマンセットまで、品質に妥協することなく、幅広い機器を取り揃えています。貴社のニーズに合わせて最適な商品をお選びいただき、業務効率化とコスト削減を実現してみませんか？
               </p>
               <div class="p-hero-sub__buttonWrap">
                 <a href="#lineup" class="c-button -orange -sub -arrow-white">ラインナップを見る</a>
@@ -261,7 +261,9 @@
                                 <?php echo "PENTAX" ?>
                               <?php elseif ($maker == 'nikon') : ?>
                                 <?php echo "NIKON" ?>
-                              <?php elseif ($maker == 'ti') : ?>
+                              <?php elseif ($maker == 'trimble') : ?>
+                                <?php echo "ニコントリンブル" ?>
+                              <?php elseif ($maker == 'ti-asahi') : ?>
                                 <?php echo "TIアサヒ" ?>
                               <?php elseif ($maker == 'other') : ?>
                                 <?php echo "その他" ?>

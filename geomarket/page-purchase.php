@@ -121,8 +121,10 @@ get_header();
                         echo 'PENTAX';
                       elseif( $maker == 'nikon' ):
                         echo 'NIKON';
-                      elseif( $maker == 'ti' ):
-                        echo 'TIアサヒ';
+                      elseif ($maker == 'trimble') : 
+                        echo "ニコントリンブル" ;
+                      elseif ($maker == 'ti-asahi') : 
+                        echo "TIアサヒ" ;
                       elseif( $maker == 'other' ):
                         echo 'その他';
                       endif;

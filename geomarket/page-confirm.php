@@ -21,14 +21,6 @@
         </p>
 
 
-        <!-- 無料査定のお申し込み -->
-        <?php elseif(strstr($url,'assessment-2')): ?>
-        <h2 class="c-heading -main">無料査定のお申し込み</h2>
-        <p class="p-contact__description">
-              入力内容をご確認のうえ、「送信する」ボタンを押してください。
-        </p>
-
-
         <?php elseif(strstr($url,'buy')): ?>
         <!-- 測量機器を探すのお問い合わせ -->
         <div class="p-seek__contactContent">
@@ -80,8 +72,10 @@
                     <?php echo"PENTAX" ?>
                     <?php elseif( $maker == 'nikon' ): ?>
                     <?php echo"NIKON" ?>
-                    <?php elseif( $maker == 'ti' ): ?>
-                    <?php echo"TIアサヒ" ?>
+                    <?php elseif ($maker == 'trimble') : ?>
+                      <?php echo "ニコントリンブル" ?>
+                    <?php elseif ($maker == 'ti-asahi') : ?>
+                      <?php echo "TIアサヒ" ?>
                     <?php elseif( $maker == 'other' ): ?>
                     <?php echo"その他" ?>
                     <?php endif; ?></dd>
@@ -144,36 +138,5 @@
   </div>
   <!-- /.l-contents -->
 </main>
-
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var targetElement = document.querySelector('.target-element');
-            var popup = document.querySelector('.popup');
-            var closeBtn = document.querySelector('.close-btn');
-
-            if (targetElement) {
-                // ターゲット要素が表示されたときに吹き出しを表示
-                var observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            popup.classList.add('show');
-                        }
-                    });
-                });
-
-                observer.observe(targetElement);
-            }
-
-            if (closeBtn) {
-                // 閉じるボタンがクリックされたときに吹き出しを閉じる
-                closeBtn.addEventListener('click', function() {
-                    popup.classList.remove('show');
-                    setTimeout(function() {
-                        popup.style.display = 'none';
-                    }, 500); // フェードアウトのアニメーションが完了するまで待つ
-                });
-            }
-        });
-    </script>
 
 <?php get_footer(); ?>

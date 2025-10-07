@@ -1,37 +1,38 @@
 <div class="l-contents">
   <div class="l-contents__footerInner">
-
+    
     <div class="l-footer__contact">
-      <section class="p-contact <?php if (is_singular('buy')) {
-                                  echo "single-buy";
-                                } ?>">
-        <div class="l-container">
-          <div class="p-contact__wrap">
-            <p class="p-contact__text">
-              まずはお気軽にご相談、お問い合わせください。<br class="pc-hide">
-              ご希望商品のリクエストや点検・修理など、承ります。
-            </p>
-            <a href="<?php echo esc_url(home_url()); ?>/contact" class="c-button button-contact">CONTACT</a>
+        <section class="p-contact <?php if (is_singular('buy')) {
+                                    echo "single-buy";
+                                  } ?>">
+          <div class="l-container">
+            <div class="p-contact__wrap">
+              <p class="p-contact__text">
+                まずはお気軽にご相談、お問い合わせください。<br class="pc-hide">
+                ご希望商品のリクエストや点検・修理など、承ります。
+              </p>
+              <a href="<?php echo esc_url(home_url()); ?>/contact" class="c-button button-contact">CONTACT</a>
+            </div>
           </div>
-        </div>
+          
+          <!-- /.l-container -->
 
-        <!-- /.l-container -->
-
-      </section>
-
-      <section class="p-contact-note">
-        <div class="l-container">
-          <p class="p-contact__text--tokusyouhou">
-            GEOMARKETは古物営業法に基づく古物商の許可を得て運営しております。
-            【古物営業法の規定に基づく表示】有限会社秋測　長野県公安委員会　第481102400030号
-          </p>
-          <a href="<?php echo esc_url(home_url()); ?>/tokusyouhou/" class="c-tokusyouhou__link">
-            古物営業法の規定に基づく表示はこちら＞
-          </a>
-        </div>
-      </section>
+        </section>
+        
+        <section class="p-contact-note">
+          <div class="l-container">
+            <p class="p-contact__text--tokusyouhou">
+              GEOMARKETは古物営業法に基づく古物商の許可を得て運営しております。
+              【古物営業法の規定に基づく表示】有限会社秋測　長野県公安委員会　第481102400030号
+            </p>
+            <a href="<?php echo esc_url(home_url()); ?>/tokusyouhou/" class="c-tokusyouhou__link">
+              古物営業法の規定に基づく表示はこちら＞
+            </a>
+          </div>
+        </section>
     </div>
 
+    <!-- /.p-contact -->
     <footer class="l-footer p-footer">
       <div class="l-container">
         <div class="p-footer__wrap">
@@ -60,6 +61,7 @@
               </ul>
             </div>
           </div>
+          <!-- /.p-footer__right -->
           <div class="p-footer__left">
 
             <dl class="p-footer__menu js-footer-accordion">
@@ -142,6 +144,8 @@
             </dl>
 
             <dl class="p-footer__menu js-footer-accordion">
+              
+              <dt class="p-footer__menuTitle -arrow"><a href="<?php echo esc_url(home_url()); ?>/useful/">お役立ち情報</a><i></i></dt>
               <dt class="p-footer__menuTitle -arrow"><a href="<?php echo esc_url(home_url()); ?>/information/">お知らせ</a><i></i></dt>
               <dd class="p-footer__menuContent">
                 <ul>
@@ -164,7 +168,9 @@
             </div> -->
 
           </div>
+          <!-- /.p-footer__left -->
         </div>
+        <!-- /.p-footer__wrap -->
         <div class="p-footer__info -sp">
           <ul>
             <li><a href="<?php echo esc_url(home_url()); ?>/company/">企業情報</a></li>
@@ -183,10 +189,13 @@
         </div>
 
       </div>
+      <!-- /.l-container -->
       <p class="page-top" id="footer-page-top"><a href="">TOP</a></p>
     </footer>
   </div>
+  <!-- /.l-contents__footerInner -->
 </div>
+<!-- /.l-contents -->
 <?php wp_footer(); ?>
 <!-- Sibulla tracking code start -->
 <script type="text/javascript">

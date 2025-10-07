@@ -197,7 +197,9 @@
                 <?php echo "PENTAX" ?>
               <?php elseif ($maker == 'nikon') : ?>
                 <?php echo "NIKON" ?>
-              <?php elseif ($maker == 'ti') : ?>
+              <?php elseif ($maker == 'trimble') : ?>
+                <?php echo "ニコントリンブル" ?>
+              <?php elseif ($maker == 'ti-asahi') : ?>
                 <?php echo "TIアサヒ" ?>
               <?php elseif ($maker == 'other') : ?>
                 <?php echo "その他" ?>
@@ -255,23 +257,9 @@
                 <?php elseif ($goods == "oppo") : ?>
                   <a href="<?php echo esc_url(home_url('/buy/purchase/?post_id=' . get_the_ID())); ?>" class="c-button -buy -buyOrange -sould">商談中</a>
                 <?php else : ?>
-                  <a href="<?php echo esc_url(home_url('/buy/purchase/?post_id=' . get_the_ID())); ?>&title=<?php echo $title  ?>&kiki-code=<?php the_field('code');  ?>&kiki-model=<?php the_field('model');  ?>&kiki-maker=<?php the_field('maker');  ?>&machine-price=<?php
-                  $field_link = get_field('select_price'); //カテゴリーの取得
-                  if ($field_link && in_array('cam_select', $field_link)) : 
-                  echo number_format(get_field('cam_price')); ?>円<?php
-                  else :
-                  echo number_format(get_field('nomal_price')); ?>円<?php
-                  endif; 
-                ?>" class="c-button -orange -buy -buyOrange">購入する</a>
+                  <a href="<?php echo esc_url(home_url('/buy/purchase/?post_id=' . get_the_ID())); ?>" class="c-button -orange -buy -buyOrange">購入する</a>
                 <?php endif; ?>
-                <a href="<?php echo esc_url(home_url('/buy/contact/?post_id=' . get_the_ID())); ?>&title=<?php echo $title  ?>&kiki-code=<?php the_field('code');  ?>&kiki-model=<?php the_field('model');  ?>&kiki-maker=<?php the_field('maker');  ?>&machine-price=<?php
-                  $field_link = get_field('select_price'); //カテゴリーの取得
-                  if ($field_link && in_array('cam_select', $field_link)) : 
-                  echo number_format(get_field('cam_price')); ?>円<?php
-                  else :
-                  echo number_format(get_field('nomal_price')); ?>円<?php
-                  endif; 
-                ?>" class="c-button -gray -contact -buyGray">この製品へのお問い合わせ</a>
+                <a href="<?php echo esc_url(home_url('/buy/contact/?post_id=' . get_the_ID())); ?>" class="c-button -gray -contact -buyGray">この製品へのお問い合わせ</a>
               </div>
             </div>
             <div class="link-wrap">
@@ -281,7 +269,8 @@
                 <p>シェアする</p>
                 <ul class="sns-list">
                   <li class="sns-list__item">
-                    <a href="http://www.facebook.com/share.php?u=https://geomarket.jp/buy/<?php $id = get_the_ID(); echo $id ?>/" target="_blank" rel="noopner,noreferrer">
+                    <a href="http://www.facebook.com/share.php?u=https://geomarket.jp/buy/<?php $id = get_the_ID();
+                                                                                          echo $id ?>/" target="_blank" rel="noopner,noreferrer">
                       <img src="<?php echo get_template_directory_uri(); ?>/assets/images/under/facebook-icon.svg" alt="facebookアイコン">
                     </a>
                     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v12.0" nonce="lR0FwTPD"></script>
@@ -379,7 +368,9 @@
                     <?php echo "PENTAX" ?>
                   <?php elseif ($maker == 'nikon') : ?>
                     <?php echo "NIKON" ?>
-                  <?php elseif ($maker == 'ti') : ?>
+                  <?php elseif ($maker == 'trimble') : ?>
+                    <?php echo "ニコントリンブル" ?>
+                  <?php elseif ($maker == 'ti-asahi') : ?>
                     <?php echo "TIアサヒ" ?>
                   <?php elseif ($maker == 'other') : ?>
                     <?php echo "その他" ?>
@@ -634,10 +625,10 @@
         <!-- /.p-single__butonWrap -->
       </div>
       <?php //タームが付与されていたら同じターム標品を出力
-      // $terms を取得するコード
-      $terms = get_the_terms($post->ID, 'keyword');
-      // タームが取得できた場合
-      if ($terms && !is_wp_error($terms)) {
+        // $terms を取得するコード
+        $terms = get_the_terms($post->ID, 'keyword');
+        // タームが取得できた場合
+        if ($terms && !is_wp_error($terms)) {
       ?>
         <section class="p-single__relation l-spacer -top">
           <div class="p-single__relation-inner">
@@ -645,101 +636,101 @@
               <h2 class="c-heading -main -line">関連機器</h2>
               <div class="swiper-container -single__reration swiper-single__reration p-main__reco ">
                 <?php
-                $term_ids = array(); // タームIDを格納する配列を初期化
-                // タームIDを取得して配列に格納
-                foreach ($terms as $term) {
-                  $term_ids[] = $term->term_id;
-                }
-                $args = array(
-                  'post_type' => 'buy',
-                  'posts_per_page' => -1,
-                  'orderby' => 'date',
-                  'order' => 'desc',
-                  'meta_query' => array(
-                    array(
-                      'key' => 'recommend',
-                      'value' => '1',
-                      'compare' => '=',
+                  $term_ids = array(); // タームIDを格納する配列を初期化
+                  // タームIDを取得して配列に格納
+                  foreach ($terms as $term) {
+                    $term_ids[] = $term->term_id;
+                  }
+                  $args = array(
+                    'post_type' => 'buy',
+                    'posts_per_page' => -1,
+                    'orderby' => 'date',
+                    'order' => 'desc',
+                    'meta_query' => array(
+                      array(
+                        'key' => 'recommend',
+                        'value' => '1',
+                        'compare' => '=',
+                      ),
                     ),
-                  ),
-                  'tax_query' => array(
-                    array(
-                      'taxonomy' => 'keyword',
-                      'field' => 'id',
-                      'terms' => $term_ids,
-                      'operator' => 'IN',
+                    'tax_query' => array(
+                      array(
+                        'taxonomy' => 'keyword',
+                        'field' => 'id',
+                        'terms' => $term_ids,
+                        'operator' => 'IN',
+                      ),
                     ),
-                  ),
-                );
-                $the_query = new WP_query($args);
-                if ($the_query->have_posts()) :
+                  );
+                  $the_query = new WP_query($args);
+                  if ($the_query->have_posts()) :
                 ?>
-                  <ul class="swiper-wrapper">
-                    <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                      <li class="swiper-slide -top">
-                        <a class="c-card" href="<?php the_permalink(); ?>">
-                          <?php
-                          $goods = get_field('select_goods'); //カテゴリーの取得
-                          ?>
-                          <div class="c-card__head">
-                            <?php if (get_field('main_image')) : ?>
-                              <img src="<?php the_field('main_image'); ?>">
-                            <?php else : ?>
-                              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/no-picture.png" alt="商品画像を準備中です。">
-                            <?php endif; ?>
-                            <?php if ($goods) : ?>
-                              <span class="effect <?php if ($goods == "sould") {
-                                                    echo "-sould";
-                                                  } elseif ($goods == "no") {
-                                                    echo "";
-                                                  } ?>">
-                                <?php if ($goods == "sould") {
-                                  echo "SOLD OUT";
-                                }  ?>
-                              </span>
-                            <?php endif; ?>
-                          </div>
-                          <div class="c-card__body">
-                            <div class="c-card__body-inner">
-                              <?php get_template_part("/template-parts/rental/custom/maker") ?>
+                <ul class="swiper-wrapper">
+                  <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+                    <li class="swiper-slide -top">
+                      <a class="c-card" href="<?php the_permalink(); ?>">
+                        <?php
+                        $goods = get_field('select_goods'); //カテゴリーの取得
+                        ?>
+                        <div class="c-card__head">
+                          <?php if (get_field('main_image')) : ?>
+                            <img src="<?php the_field('main_image'); ?>">
+                          <?php else : ?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/no-picture.png" alt="商品画像を準備中です。">
+                          <?php endif; ?>
+                          <?php if ($goods) : ?>
+                            <span class="effect <?php if ($goods == "sould") {
+                                                  echo "-sould";
+                                                } elseif ($goods == "no") {
+                                                  echo "";
+                                                } ?>">
+                              <?php if ($goods == "sould") {
+                                echo "SOLD OUT";
+                              }  ?>
+                            </span>
+                          <?php endif; ?>
+                        </div>
+                        <div class="c-card__body">
+                          <div class="c-card__body-inner">
+                            <?php get_template_part("/template-parts/rental/custom/maker") ?>
 
-                              <h3 class="c-card__title -top"><?php the_title(); ?></h3>
-                              <span class="price-wrap">
-                                <?php if (get_field('cam_price')) : ?>
-                                  <span class="price -cam -cam-top">
-                                    <span class="cat">
-                                      <span class="cat-text">キャンペーン価格(税込)</span>
-                                      <em>
-                                        <?php echo number_format(get_field('cam_price')); ?>
-                                      </em>
-                                      <span class="yen">円</span>
-                                    </span>
-                                  </span>
-                                <?php else : ?>
-                                  <span class="price">
-                                    <span class="cat">
-                                      <span class="cat-text">通常価格(税込)</span>
-                                      <em>
-                                        <?php echo number_format(get_field('nomal_price')); ?>
-                                      </em>
-                                    </span>
+                            <h3 class="c-card__title -top"><?php the_title(); ?></h3>
+                            <span class="price-wrap">
+                              <?php if (get_field('cam_price')) : ?>
+                                <span class="price -cam -cam-top">
+                                  <span class="cat">
+                                    <span class="cat-text">キャンペーン価格(税込)</span>
+                                    <em>
+                                      <?php echo number_format(get_field('cam_price')); ?>
+                                    </em>
                                     <span class="yen">円</span>
                                   </span>
-                                <?php endif; ?>
-                              </span>
-                            </div>
-                            <!-- /.c-card__inner -->
-                            <p class="button">VIEW DETAIL</p>
+                                </span>
+                              <?php else : ?>
+                                <span class="price">
+                                  <span class="cat">
+                                    <span class="cat-text">通常価格(税込)</span>
+                                    <em>
+                                      <?php echo number_format(get_field('nomal_price')); ?>
+                                    </em>
+                                  </span>
+                                  <span class="yen">円</span>
+                                </span>
+                              <?php endif; ?>
+                            </span>
                           </div>
-                        </a>
-                      </li>
-                    <?php endwhile; ?>
-                  </ul>
+                          <!-- /.c-card__inner -->
+                          <p class="button">VIEW DETAIL</p>
+                        </div>
+                      </a>
+                    </li>
+                  <?php endwhile; ?>
+                </ul>
                 <?php else : ?>
-                  <p>まだ投稿がありません。</p>
+                    <p>まだ投稿がありません。</p>
                 <?php wp_reset_postdata();
-                endif;
-                ?>
+                  endif;
+                  ?>
               </div>
               <div class="swiper-button__container -top">
                 <!-- <div class="swiper-pagination -top pageTop"></div> -->
@@ -751,7 +742,7 @@
             <!-- /.l-container -->
           </div>
         </section>
-      <?php } ?>
+      <?php }?>
 
     </section>
   </div>

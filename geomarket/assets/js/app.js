@@ -177,17 +177,24 @@ $(function (jQuery) {
     $("body").removeClass("is-modalActive");
   });
 
-  /* お問い合わせフォーム mw wp form 住所自動*/
+  /* ==============================
+    お問い合わせフォーム mw wp form 住所自動
+  ============================== */
   jQuery("#zip").keyup(function () {
     AjaxZip3.zip2addr(this, "", "prefecture", "address");
   });
 
-  /* ページ印刷*/
+  /* ==============================
+    ページ印刷
+  ============================== */
+
   $(".js-print").click(function () {
     window.print();
   });
 
-  /* レンタル期間のイベント*/
+  /* ==============================
+    レンタル期間のイベント
+  ============================== */
   // 情報の取得
   var input_name = document.getElementById("your-period01");
   var input_name2 = document.getElementById("your-period02");
@@ -210,256 +217,253 @@ $(function (jQuery) {
     $(check2).val("");
   });
 
+  // $(function () {
+  //   accordion();
+  //   sptitText();
+  //   tab();
+  //   fixedBanner();
+  //   slide();
+  // });
 });
 
-/* swiper */
+/* ==============================
+    swiper
+  ============================== */
+var heroSwiper = new Swiper(".swiper-hero", {
+  // initialSlide: 0, //最初に何枚目のスライドを表示させるか
+  // loop: true,
+  // effect: "fade", //フェードの指定
+  // autoplay: {
+  //   delay: 3500, //自動再生
+  //   disableOnInteraction: false, //ユーザー側で操作してもスライドを止めない
+  // },
+  // speed: 3000, //3秒かけてフェードで切り替わる
+  // allowTouchMove: false, //マウスでのスワイプを禁止
+  // pagination: {
+  //   el: ".pageHero", //ページネーション表示
+  //   type: "bullets", //ページネーション ドット
+  //   clickable: true,
+  // },
+});
 
-  var topSwiper = new Swiper(".swiper-top", {
-    centeredSlides: true, //1枚目のスライド中央配置
-    slidesPerView: "auto", //何枚見せるか
-    spaceBetween: 20, //余白
-    initialSlide: 0, //最初に何枚目のスライドを表示させるか 0始まり
-    loop: false,
+var topSwiper = new Swiper(".swiper-top", {
+  centeredSlides: true, //1枚目のスライド中央配置
+  slidesPerView: "auto", //何枚見せるか
+  spaceBetween: 20, //余白
+  initialSlide: 0, //最初に何枚目のスライドを表示させるか 0始まり
+  loop: false,
 
-    navigation: {
-      nextEl: ".nextTop", //ボタン表示
-      prevEl: ".prevTop", //ボタン表示
+  navigation: {
+    nextEl: ".nextTop", //ボタン表示
+    prevEl: ".prevTop", //ボタン表示
+  },
+
+  // pagination: {
+  //   el: ".pageTop", //ページネーション表示
+  //   // type: "bullets", //ページネーション ドット
+  //   clickable: true,
+  // },
+
+  // pagination: {
+  //   el: ".swiper-pagination",
+  //   type: "bullets",
+  //   clickable: true,
+  // },
+  scrollbar: {
+    el: ".pageTop",
+    draggable: true,
+  },
+
+  breakpoints: {
+    // 1024px以上の場合
+    1024: {
+      centeredSlides: false, //1枚目のスライド中央配置
     },
+  },
+});
 
+var topSwiper02 = new Swiper(".swiper-top02", {
+  centeredSlides: true, //1枚目のスライド中央配置
+  slidesPerView: "auto", //何枚見せるか
+  spaceBetween: 20, //余白
+  initialSlide: 0, //最初に何枚目のスライドを表示させるか 0始まり
+  loop: false,
 
-    scrollbar: {
-      el: ".pageTop",
-      draggable: true,
+  navigation: {
+    nextEl: ".nextTop02", //ボタン表示
+    prevEl: ".prevTop02", //ボタン表示
+  },
+
+  scrollbar: {
+    el: ".pageTop02",
+    draggable: true,
+  },
+
+  breakpoints: {
+    // 1024px以上の場合
+    1024: {
+      centeredSlides: false, //1枚目のスライド中央配置
     },
+  },
+});
 
-    breakpoints: {
-      // 1024px以上の場合
-      1024: {
-        centeredSlides: false, //1枚目のスライド中央配置
-      },
+const singleRelationSwiper = new Swiper(".swiper-single__reration", {
+  centeredSlides: true, //1枚目のスライド中央配置
+  slidesPerView: "auto", //何枚見せるか
+  spaceBetween: 20, //余白
+  initialSlide: 0, //最初に何枚目のスライドを表示させるか 0始まり
+  loop: false,
+
+  navigation: {
+    nextEl: ".nextSingleRelation", //ボタン表示
+    prevEl: ".prevSingleRelation", //ボタン表示
+  },
+
+  scrollbar: {
+    el: ".singleRelation",
+    draggable: true,
+  },
+
+  breakpoints: {
+    // 1024px以上の場合
+    1024: {
+      centeredSlides: false, //1枚目のスライド中央配置
     },
-  });
+  },
+});
 
-  var topSwiper02 = new Swiper(".swiper-top02", {
-    centeredSlides: true, //1枚目のスライド中央配置
-    slidesPerView: "auto", //何枚見せるか
-    spaceBetween: 20, //余白
-    initialSlide: 0, //最初に何枚目のスライドを表示させるか 0始まり
-    loop: false,
+var newsSwiper = new Swiper(".swiper-info", {
+  centeredSlides: true, //1枚目のスライド中央配置
+  slidesPerView: "auto", //必須
+  spaceBetween: 20, //余白
+  initialSlide: 0, //最初に何枚目のスライドを表示させるか
+  loop: false,
 
-    navigation: {
-      nextEl: ".nextTop02", //ボタン表示
-      prevEl: ".prevTop02", //ボタン表示
+  navigation: {
+    nextEl: ".nextInfo", //ボタン表示
+    prevEl: ".prevInfo", //ボタン表示
+  },
+
+  pagination: {
+    el: ".pageInfo", //ページネーション表示
+    type: "bullets", //ページネーション ドット
+    clickable: true,
+  },
+
+  breakpoints: {
+    // 1024px以上の場合
+    1024: {
+      centeredSlides: false, //1枚目のスライド中央配置
+      slidesPerView: "2", //必須
     },
+  },
+});
 
-    scrollbar: {
-      el: ".pageTop02",
-      draggable: true,
-    },
+var galleryThumbs = new Swiper(".gallery-thumbs", {
+  spaceBetween: 10,
+  slidesPerView: 5,
+  direction: "vertical",
 
-    breakpoints: {
-      // 1024px以上の場合
-      1024: {
-        centeredSlides: false, //1枚目のスライド中央配置
-      },
-    },
-  });
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+});
 
-  const singleRelationSwiper = new Swiper(".swiper-single__reration", {
-    centeredSlides: true, //1枚目のスライド中央配置
-    slidesPerView: "auto", //何枚見せるか
-    spaceBetween: 20, //余白
-    initialSlide: 0, //最初に何枚目のスライドを表示させるか 0始まり
-    loop: false,
-
-    navigation: {
-      nextEl: ".nextSingleRelation", //ボタン表示
-      prevEl: ".prevSingleRelation", //ボタン表示
-    },
-
-    scrollbar: {
-      el: ".singleRelation",
-      draggable: true,
-    },
-
-    breakpoints: {
-      // 1024px以上の場合
-      1024: {
-        centeredSlides: false, //1枚目のスライド中央配置
-      },
-    },
-  });
-
-  var newsSwiper = new Swiper(".swiper-info", {
-    centeredSlides: true, //1枚目のスライド中央配置
-    slidesPerView: "auto", //必須
-    spaceBetween: 20, //余白
-    initialSlide: 0, //最初に何枚目のスライドを表示させるか
-    loop: false,
-
-    navigation: {
-      nextEl: ".nextInfo", //ボタン表示
-      prevEl: ".prevInfo", //ボタン表示
-    },
-
-    pagination: {
-      el: ".pageInfo", //ページネーション表示
-      type: "bullets", //ページネーション ドット
-      clickable: true,
-    },
-
-    breakpoints: {
-      // 1024px以上の場合
-      1024: {
-        centeredSlides: false, //1枚目のスライド中央配置
-        slidesPerView: "2", //必須
-      },
-    },
-  });
-
-  var galleryThumbs = new Swiper(".gallery-thumbs", {
-    spaceBetween: 10,
-    slidesPerView: 5,
-    direction: "vertical",
-
-    freeMode: true,
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true,
-  });
-
-  var galleryTop = new Swiper(".gallery-top", {
-    pagination: {
-      el: ".pageSingle", //ページネーション表示
-      type: "bullets", //ページネーション ドット
-      clickable: true,
-    },
-    thumbs: {
-      swiper: galleryThumbs,
-    },
-  });
+var galleryTop = new Swiper(".gallery-top", {
+  pagination: {
+    el: ".pageSingle", //ページネーション表示
+    type: "bullets", //ページネーション ドット
+    clickable: true,
+  },
+  thumbs: {
+    swiper: galleryThumbs,
+  },
+});
 
 
 //検索行為後は一覧というタイトルを消す（今後いるか不明）
-  const chageTitle = () => {
-    // 現在のURLを取得
-    const currentURL = window.location.href;
+const chageTitle = () => {
+  // 現在のURLを取得
+  const currentURL = window.location.href;
 
-    // #seek__resultTextがURLに存在したら
-    if (currentURL.indexOf("#seek__resultText") !== -1 || currentURL.indexOf("#lineup") !== -1) {
-      const resultTarget = document.querySelector(".c-seek__resultText > span");
-      const rentalTitle = document.querySelector(".rental-title");
-      const buyTitle = document.querySelector(".buy-title");
+  // #seek__resultTextがURLに存在したら
+  if (currentURL.indexOf("#seek__resultText") !== -1 || currentURL.indexOf("#lineup") !== -1) {
+    const resultTarget = document.querySelector(".c-seek__resultText > span");
+    const rentalTitle = document.querySelector(".rental-title");
+    const buyTitle = document.querySelector(".buy-title");
 
-      if (resultTarget && rentalTitle) {
-        // 結果のテキストを隠す
-        const resultSubDescriptin = document.getElementsByClassName("p-sub__description")[0];
-        resultSubDescriptin.classList.add("is-hide");
-        resultTarget.classList.add("is-remove");
-        rentalTitle.textContent = "";
-        rentalTitle.appendChild(resultTarget);
-      } else if (resultTarget && buyTitle) {
-        resultTarget.classList.add("is-remove");
-        buyTitle.textContent = "";
-        buyTitle.appendChild(resultTarget);
-      }
+    if (resultTarget && rentalTitle) {
+      // 結果のテキストを隠す
+      const resultSubDescriptin = document.getElementsByClassName("p-sub__description")[0];
+      resultSubDescriptin.classList.add("is-hide");
+      resultTarget.classList.add("is-remove");
+      rentalTitle.textContent = "";
+      rentalTitle.appendChild(resultTarget);
+    } else if (resultTarget && buyTitle) {
+      resultTarget.classList.add("is-remove");
+      buyTitle.textContent = "";
+      buyTitle.appendChild(resultTarget);
     }
-  };
-  chageTitle();
-
-
-//問合せ確認ページへの移管時は、パラメーターを引き継ぐ
-  document.addEventListener("DOMContentLoaded", function() {
-    // 現在のURLを取得
-    var currentURL = window.location.href;
-
-    // URLが 'confirm/' または 'thanks/' で終わるかを確認
-    if (currentURL.endsWith("confirm/") || currentURL.endsWith("thanks/")) {
-        var params = getQueryParamsFromReferrer(document.referrer);
-
-        // パラメータが存在する場合のみ追加
-        if (Object.keys(params).length > 0) {
-            var newURL = generateURLWithParams(currentURL, params);
-
-            // 新しいURLに変更（リロードなし）
-            window.history.replaceState(null, null, newURL);
-
-            // PHPで新しいURLパラメータを使用できるようにリロードを発火
-            window.location.reload();
-        }
-    }
-  });
-
-  function getQueryParamsFromReferrer(referrer) {
-    var params = {};
-    var queryString = referrer ? referrer.split('?')[1] : '';
-    if (!queryString) return params;
-
-    var queries = queryString.split("&");
-
-    queries.forEach(function(query) {
-        var [key, value] = query.split("=");
-        params[key] = decodeURIComponent(value || "");
-    });
-
-    return params;
   }
-
-  function generateURLWithParams(url, params) {
-    var queryString = Object.keys(params).map(function(key) {
-        return key + "=" + encodeURIComponent(params[key]);
-    }).join("&");
-
-    return url + "?" + queryString;
-  }
+};
+chageTitle();
 
 
 
+//検索欄閉じる処理
+// document.addEventListener('DOMContentLoaded', function() {
+//   // 現在のURLを取得
+//   const currentUrl = window.location.pathname;
 
-//レンタルフォーム 入力必須分岐 レンタル期間
-// document.addEventListener("DOMContentLoaded", function() {
+//   // URLが 'buy/' で始まり、かつ 'buy/' だけでない場合
+//   if (currentUrl === '/' || currentUrl === '/buy' || currentUrl === '/buy/'|| currentUrl === '/rental'|| currentUrl === '/rental/') {
+//     // ここに 'buy' だけのURLに対する処理を記述
+//   } else if (currentUrl.startsWith('/buy/')) {
+//     // ここに 'buy/' の後に何かが続くURLに対する処理を記述
 
-//   // novalidate属性を削除する
-//   var form = document.querySelector('form');
-//   form.removeAttribute('novalidate');
+//     // .c-heading.-sub クラスの要素を取得
+//     const headingElements = document.querySelectorAll('.c-heading.-sub');
 
+//     // 各要素に .is-clos クラスを追加
+//     headingElements.forEach(function(element) {
+//       element.classList.add('is-close');
+//     });
 
-//   var checkperiod = document.querySelector('#checkperiod .wpcf7-list-item label input');
-//   var period01 = document.getElementById('your-period01');
-//   var period02 = document.getElementById('your-period02');
+//     // .c-seek__innerWrap クラスの要素を取得
+//     const seekElements = document.querySelectorAll('.c-seek__innerWrap');
 
-//   // ページ読み込み時に `required` 属性を削除
-//     period01.setAttribute('required', 'required');
-//     period02.setAttribute('required', 'required');
-
-//   checkperiod.addEventListener('change', function() {
-//     if (checkperiod.checked) {
-//       period01.removeAttribute('required');
-//       period02.removeAttribute('required');
-//     } else {
-//       period01.setAttribute('required', 'required');
-//       period02.setAttribute('required', 'required');
-//     }
-//   });
+//     // 各要素に display: none; を追加
+//     seekElements.forEach(function(element) {
+//       element.style.display = 'none';
+//     });
+//   } else if (currentUrl.startsWith('/rental/')) {
+//     // ここに 'buy/' の後に何かが続くURLに対する処理を記述
 
 
+//   } else {
+//     // ここに 'buy/' 以外のURLに対する処理を記述
+
+//     // .c-heading.-sub クラスの要素を取得
+//     const headingElements = document.querySelectorAll('.c-heading.-sub');
+
+//     // 各要素に .is-clos クラスを追加
+//     headingElements.forEach(function(element) {
+//       element.classList.add('is-close');
+//     });
+
+//     // .c-seek__innerWrap クラスの要素を取得
+//     const seekElements = document.querySelectorAll('.c-seek__innerWrap');
+
+//     // 各要素に display: none; を追加
+//     seekElements.forEach(function(element) {
+//       element.style.display = 'none';
+//     });
+
+//   }
 
 // });
 
 
-//サイトのリンクを表示させないように
-document.addEventListener("DOMContentLoaded", function() {
-  var elements = document.querySelectorAll('.upload-box label');
 
-  elements.forEach(function(element) {
-      var text = element.textContent;
-      var index = text.indexOf('wpcf7-files/');
 
-      if (index !== -1) {
-          // 'wpcf7-files/' を含めた左側の文字を削除
-          element.textContent = text.substring(index + 'wpcf7-files/'.length);
 
-          // 透明度を1に変更して表示
-          element.style.opacity = 1;
-      }
-  });
-});
