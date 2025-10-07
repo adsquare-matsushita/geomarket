@@ -1,3 +1,19 @@
+<?php
+// 現在のリクエストURIを取得
+$request_uri = $_SERVER['REQUEST_URI'];
+
+// 特定のパスに一致する場合にヘッダーを設定
+if (preg_match('#^/contact(/confirm)?$#', $request_uri) ||
+    preg_match('#^/rental/contact(/confirm)?$#', $request_uri) ||
+    preg_match('#^/reuse/assessment(/confirm)?$#', $request_uri)) {
+    // キャッシュ無効化ヘッダーを設定
+    header('Cache-Control: no-store, no-cache, must-revalidate');
+    header('Pragma: no-cache'); // 古いブラウザ対応
+    header('Expires: 0'); // 即時期限切れを指定
+}
+?>
+
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -123,6 +139,7 @@
               <li class="p-globalNav__innerList-item c-child"><a href="<?php echo esc_url(home_url()); ?>/information/campaign/">キャンペーン</a></li>
               <li class="p-globalNav__innerList-item c-child"><a href="<?php echo esc_url(home_url()); ?>/information/stock/">入荷情報</a></li>
               <li class="p-globalNav__innerList-item c-child"><a href="<?php echo esc_url(home_url()); ?>/information/sale/">販売情報</a></li>
+              <li class="p-globalNav__innerList-item"><a href="<?php echo esc_url(home_url()); ?>/useful">お役立ち情報</a></li>
               <li class="p-globalNav__innerList-item -gbn-contact"><a href="/contact/">お問い合わせ</a></li>
               <li class="p-globalNav__innerList-item -sns-icons">
                 <ul>

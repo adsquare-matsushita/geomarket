@@ -199,7 +199,6 @@ add_filter('wpcf7_validate_date*', 'custom_validation', 10, 2);
 add_filter('wpcf7_validate_tel', 'custom_validation', 10, 2);
 add_filter('wpcf7_validate_tel*', 'custom_validation', 10, 2);
 
-
 function custom_validation($result, $tag)
 {
   $name = $tag->name;
@@ -218,10 +217,25 @@ function custom_validation($result, $tag)
     'check' => '※各規約に同意の上、チェックをしてください。',
     'radio' => '※「ご希望のご連絡方法」は必ず選択してください。',
     'your-model' => '※「機種名」は必ず入力してください。',
+    'repair-class' => '※「お問い合わせ区分」は必ず入力してください。',
+    'repair-type' => '※「機器の種類」は必ず入力してください。',
+    'repair-maker' => '※「メーカー」は必ず入力してください。',
   );
 
   if (array_key_exists($name, $validation_messages) && empty($_POST[$name])) {
     $result->invalidate($tag, $validation_messages[$name]);
+  }
+
+  // メールアドレス確認用の一致チェック
+  if ($name === 'your-email-confirm') {
+    $email = isset($_POST['your-email']) ? trim($_POST['your-email']) : '';
+    $email_conf = isset($_POST['your-email-confirm']) ? trim($_POST['your-email-confirm']) : '';
+
+    if ($email_conf === '') {
+      $result->invalidate($tag, '※「確認用メールアドレス」は必ず入力してください。');
+    } elseif ($email !== $email_conf) {
+      $result->invalidate($tag, '※「確認用メールアドレス」が一致しません。');
+    }
   }
 
   if ($name == 'your-image') {
@@ -238,16 +252,12 @@ function custom_validation($result, $tag)
     if (!$checkbox) {
       $result->invalidate('checkperiod', __('※「レンタル期間が未定の場合はチェックを入れてください。」', 'textdomain'));
     }
-  } elseif ($name == 'checkperiod') {
   }
 
-  // 日本語限定
+  // 日本語限定（your-name）
   if ($name === 'your-name') {
-    // フィールドの値を取得
     $value = isset($_POST[$name]) ? $_POST[$name] : '';
-    // 改行とスペースを削除
     $sanitized_value = str_replace(array(PHP_EOL, ' '), '', $value);
-    // サニタイズされた値を正規表現でチェック
     if (!empty($sanitized_value)) {
       if (!preg_match('/^[ぁ-んァ-ンー一-龠々ー\s]+$/u', $sanitized_value)) {
         $result->invalidate($tag, '※日本語で入力してください。（スペースを含めても可）');
@@ -255,12 +265,10 @@ function custom_validation($result, $tag)
     }
   }
 
-  // 平仮名とスペースのみ許可
+  // 平仮名とスペースのみ（your-kana）
   if ($name === 'your-kana') {
     $value = isset($_POST[$name]) ? $_POST[$name] : '';
-    // 改行とスペース以外を削除
     $sanitized_value = str_replace(array(PHP_EOL, ' '), '', $value);
-    // サニタイズされた値を正規表現でチェック
     if (!empty($sanitized_value)) {
       if (!preg_match('/^[ぁ-ん\s]+$/u', $sanitized_value)) {
         $result->invalidate($tag, '※ひらがなで入力してください。（スペースを含めても可）');
@@ -268,41 +276,53 @@ function custom_validation($result, $tag)
     }
   }
 
-
-
-  //機種選択
+  // 機種選択バリデーション
   if ($name == 'your-machine') {
     $value = isset($_POST[$name]) ? $_POST[$name] : '';
-
     if ($value == '選択してください') {
       $result->invalidate($tag, "※機器名を選択してください。");
     }
   }
 
-
-  // contact-list フィールドのバリデーション
-  $validation_messages = array(
-    'contact-list' => '※「お問い合わせ項目」は必ず選択してください。',
-    // 他のフィールドのエラーメッセージもここに追加できます
-  );
+  // contact-list バリデーション
   if ($name === 'contact-list' && $_POST['contact-list'] === '未選択') {
-    $result->invalidate($tag, $validation_messages[$name]);
+    $result->invalidate($tag, '※「お問い合わせ項目」は必ず選択してください。');
   }
 
-
-  // radio フィールドのバリデーション
-  $validation_messages = array(
-    'radio' => '※「ご希望のご連絡方法」は必ず選択してください。',
-    // 他のフィールドのエラーメッセージもここに追加できます
-  );
+  // radio バリデーション
   if ($name === 'radio' && $_POST['radio'] === '未選択') {
-    $result->invalidate($tag, $validation_messages[$name]);
+    $result->invalidate($tag, '※「ご希望のご連絡方法」は必ず選択してください。');
   }
-
-
 
   return $result;
 }
+
+
+
+add_action('wpcf7_before_send_mail', 'update_your_image_for_mail_2');
+function update_your_image_for_mail_2($contact_form) {
+    $submission = WPCF7_Submission::get_instance();
+    if (!$submission) {
+        return;
+    }
+
+    // 投稿データを取得
+    $posted_data = $submission->get_posted_data();
+    $your_image = isset($posted_data['your-image']) ? $posted_data['your-image'] : '';
+
+    // your-imageの値を条件に応じて設定
+    $new_value = $your_image ? 'あり' : 'なし';
+
+    // メール（2）の設定を取得
+    $mail_user = $contact_form->prop('mail_2');
+    if (!empty($mail_user)) {
+        // メール（2）の本文を直接書き換え
+        $mail_user['body'] = str_replace('■添付写真 : [your-image]', '■添付写真 : ' . $new_value, $mail_user['body']);
+        $contact_form->set_properties(['mail_2' => $mail_user]);
+    }
+}
+
+
 
 
 // < /validation >

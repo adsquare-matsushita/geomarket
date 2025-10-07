@@ -3,6 +3,49 @@
   news
 */
 .p-news {
+  .l-spacer {
+    @include mq(desk) {
+      display: flex;
+      justify-content: center;
+      gap: 5%;
+    }
+
+    .l-container {
+      @include mq(desk) {
+        width: 100%;
+        width: 41%;
+        margin: 0;
+      }
+      &.p-useful {
+        padding: 3.5rem 0 1rem;
+        @include mq(lap) {
+          padding: 0;
+        }
+        .p-news__cat {
+          grid-template-columns: repeat(1, 1fr);
+          @include mq(lap) {
+            padding: 3rem 0 1.5rem;
+          }
+          &Item {
+            border: none;
+            text-align: left;
+            padding: 0px;
+            @media screen and (min-width: 1200px) and (max-width: 1500px) {
+              margin-top: -2rem;
+              .pc-hide {
+                display: block;
+              }
+              span {
+                font-size: 1.14286rem;
+              }
+            }
+            
+          }
+        }
+      }
+    }
+  }
+
   &__inner {
     position: relative;
 
@@ -42,7 +85,7 @@
     }
 
     &.-main {
-      padding: 3rem 0 2rem;
+      padding: 1rem 0 ;
 
       @include mq(lap) {
         padding: 3.5rem 0 1rem;
@@ -60,6 +103,12 @@
     @include mq(lap) {
       border: none;
       padding: 0 1.25rem;
+    }
+    @media screen and (min-width: 1200px) and (max-width: 1500px) {
+      padding: 0 0.5rem;
+      .pc-hide {
+        display: block;
+      }
     }
 
     &.is-tab {
@@ -84,6 +133,9 @@
       color: $primary-text-color;
       font-weight: 700;
       font-size: 1.14286rem;
+      @media screen and (min-width: 1200px) and (max-width: 1500px) {
+        font-size: 1rem;
+      }
     }
 
     a {
@@ -100,30 +152,30 @@
   }
 
   &__button {
-    position: absolute;
     display: block;
     color: $accent-color;
-    text-decoration: none;
-    right: 0;
-    top: 8px;
+    text-align: right;
+    margin: 1rem 0 0;
+    font-weight: 600;
+
 
     &:hover {
       opacity: 0.5;
     }
 
     &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      margin: auto 0;
-      left: -1.25rem;
-      background-size: contain;
-      background: url(../../assets/images/top/news-icon.svg) no-repeat;
-      background-size: contain;
-      width: 14px;
-      height: 14px;
-      display: inline-block;
+      // content: "";
+      // position: absolute;
+      // top: 0;
+      // bottom: 0;
+      // margin: auto 0;
+      // left: -1.25rem;
+      // background-size: contain;
+      // background: url(../../assets/images/top/news-icon.svg) no-repeat;
+      // background-size: contain;
+      // width: 14px;
+      // height: 14px;
+      // display: inline-block;
     }
   }
 
@@ -214,8 +266,8 @@
 
       &>span {
         @include mq(lap) {
-          display: flex;
-          align-items: center;
+          align-items: flex-start;
+          flex-direction: column;
         }
       }
 
@@ -224,17 +276,13 @@
         font-weight: 500;
 
         @include mq(lap) {
-          display: block;
+          display: inline-block;
         }
       }
 
       .cat {
         display: inline-block;
         margin-left: 0.5rem;
-
-        @include mq(lap) {
-          margin: 0 1.5rem;
-        }
       }
 
       h3 {
@@ -246,13 +294,12 @@
         text-overflow: ellipsis;
 
         @include mq(lap) {
-          width: 65%;
+          width: 95%;
           margin-top: 0;
         }
       }
     }
 
-    @include mq(lap) {}
   }
 
   &__listContent {
@@ -268,7 +315,9 @@
 .archive.category-information,
 .archive.category-sale,
 .archive.category-stock,
-.archive.category-campaign {
+.archive.category-campaign ,
+.archive.category-useful
+{
   .p-news__listItem {
     margin-top: 1rem;
 

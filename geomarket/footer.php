@@ -142,6 +142,7 @@
             </dl>
 
             <dl class="p-footer__menu js-footer-accordion">
+              <dt class="p-footer__menuTitle -arrow"><a href="<?php echo esc_url(home_url()); ?>/useful/">お役立ち情報</a><i></i></dt>
               <dt class="p-footer__menuTitle -arrow"><a href="<?php echo esc_url(home_url()); ?>/information/">お知らせ</a><i></i></dt>
               <dd class="p-footer__menuContent">
                 <ul>

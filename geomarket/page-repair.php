@@ -15,7 +15,7 @@
                 他社で断られた古い測量機器でも、弊社専門スタッフで点検・修理が可能な場合もありますので、お気軽にご相談ください。
               </p>
               <div class="p-hero-sub__buttonWrap">
-                <a href="<?php echo esc_url(home_url()); ?>/contact/" class="c-button -orange -sub -arrow-white">測量機器の修理・点検はこちら</a>
+                <a href="<?php echo esc_url(home_url()); ?>/repair/contact/" class="c-button -orange -sub -arrow-white">測量機器の修理・点検はこちら</a>
               </div>
             </div>
             <div class="p-hero-sub__block">
@@ -23,7 +23,7 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/under/mv-sub02.png" alt="測量機器を扱う人のイラスト">
               </figure>
               <div class="p-hero-sub__buttonWrap">
-                <a href="<?php echo esc_url(home_url()); ?>/contact/" class="c-button -orange -sub -arrow-white">測量機器の修理・点検はこちら</a>
+                <a href="<?php echo esc_url(home_url()); ?>/repair/contact/" class="c-button -orange -sub -arrow-white">測量機器の修理・点検はこちら</a>
               </div>
             </div>
           </div>
@@ -136,7 +136,7 @@
                   こちらからご依頼ください。</p>
               </div>
               <div class="button-wrap">
-                <a href="<?php echo esc_url(home_url()); ?>/contact" class="c-button -orange -arrow-white -main">お問い合わせはこちら</a>
+                <a href="<?php echo esc_url(home_url()); ?>/repair/contact/" class="c-button -orange -arrow-white -main">修理・点検のお申し込みはこちら</a>
               </div>
             </div>
           </div>
@@ -152,7 +152,7 @@
                 <dl>
                   <dt>メールにてお問い合わせ</dt>
                   <dd>まずは、気軽にお問い合わせください。<br>
-                    <a href="<?php echo esc_url(home_url()); ?>/contact">「お問い合わせフォーム」</a>より修理・点検のご依頼をお願いします。
+                    <a href="<?php echo esc_url(home_url()); ?>/repair/contact/">「修理・点検のお申し込み」</a>より修理・点検のご依頼をお願いします。
                   </dd>
                 </dl>
               </li>

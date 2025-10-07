@@ -1,57 +1,89 @@
 <div class="p-form__content">
-  <div class="p-single__under-item screen-reader-text">
-    <div class="p-single__under-itemDetail">
-      <h3 class="c-heading">[text title size:60  default:get readonly]</h3>
-      <div class="p-single__under-itemDetailInner">
-        <dl>
-          <dt>商品コード</dt>
-          <dd>[text kiki-code size:60  default:get readonly ]</dd>
-        </dl>
-        <dl>
-          <dt>機種モデル</dt>
-          <dd>[text kiki-model size:60  default:get readonly ]</dd>
-        </dl>
-        <dl>
-          <dt>メーカー</dt>
-          <dd>[text kiki-maker size:60  default:get readonly ]</dd>
-        </dl>
-        <dl>
-          <dt>商品価格</dt>
-          <dd>[text machine-price size:60 class:price  default:get readonly ]円(税込)</dd>
-        </dl>
+    <style>
+      .p-form .p-form__content .radio-button .wpcf7-list-item.first {
+            display: inline-block;
+        }
+      small {
+        font-size:0.9em; 
+      }
+    </style>
+  <h3 class="c-heading -sideLine">修理・点検について</h3>
+  <dl>
+    <dt><label for="your-model-number">お問い合わせ区分<span class="req">必須</span></label></dt>
+    <dd class="checkbox">
+      <div class="check-block">
+        <div>
+          [checkbox repair-class use_label_element id:checkbox class:checkbox__item "点検調整" "修理" "検定" "校正証明書" "検査成績書" "その他"]
+          <p><small>※複数選択可</small></p>
+        </div>
       </div>
-    </div>
-  </div>
-  <h3 class="c-heading -sideLine">お客様情報</h3>
-  <div class="p-form__content">
+    </dd>
+  </dl>
+  <dl>
+    <dt><label for="your-model-number">機器の種類<span class="req">必須</span></label></dt>
+    <dd class="checkbox">
+      <div class="check-block">
+        <div>
+          [checkbox repair-type use_label_element id:checkbox class:checkbox__item "トータルステーション" "レベル" "回転レーザ" "セオドライト" "墨出し器" "レーザスキャナ" "杭ナビ" "GNSS" "その他"]
+          <p><small>※複数の場合について、詳細は「お問い合わせ内容」にご記入ください。</small></p>
+        </div>
+      </div>
+    </dd>
+  </dl>
+  <dl class="radio-button">
+    <dt><label for="contact-list">メーカー<span class="req">必須</span></label></dt>
+    <dd>[radio repair-maker use_label_element class:radio-btns__item "TOPCON" "SOKKIA" "Leica" "PENTAX" "Nikon" "ニコントリンブル" "その他"]</dd>
+  </dl>
+  <dl>
+    <dt><label for="machine-name">機種名</label></dt>
+    <dd>
+      [text machine-name]
+      <p><small>※該当する機器の製品名・型名をご記入ください。</small></p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><label for="remarks">お問い合わせ内容</label></dt>
+    <dd>
+      [textarea remarks id:remarks cols:33 rows:5]
+      <p><small>※機器の状態、症状をご記入ください。</small></p>
+    </dd>
+  </dl>
+
+  <div class="inner-form">
+    <h3 class="c-heading -sideLine">お客様情報</h3>
     <dl>
       <dt><label for="your-know">当サイトを知ったきっかけ<span class="req">必須</span></label></dt>
       <dd class="checkbox">
         <div class="check-block">
           <div>
-            [checkbox your-know use_label_element class:checkbox__item "Yahoo!又はGoogle検索" "インターネット広告(バナー広告)" "ウェビナー" "メールマガジン" "調査士会会報" "ご紹介" "SNS(Facebook・Instagram・X)" "その他"]
+
+            [checkbox your-know use_label_element id:your-know class:checkbox__item "Yahoo!又はGoogle検索" "インターネット広告(バナー広告)" "ウェビナー" "メールマガジン" "調査士会会報" "ご紹介" "SNS(Facebook・Instagram・X)" "その他"]
+
+
           </div>
         </div>
       </dd>
     </dl>
     <dl>
       <dt><label for="your-name">お名前<span class="req">必須</span></label></dt>
-      <dd>[text your-name id:your-name]</dd>
+      <dd>[text your-name]</dd>
     </dl>
     <dl>
       <dt><label for="your-kana">お名前（ふりがな）<span class="req">必須</span></label></dt>
-      <dd>[text your-kana id:your-kana]</dd>
+      <dd>[text your-kana]</dd>
     </dl>
     <dl>
       <dt><label for="your-company">会社名</label></dt>
-      <dd>[text your-company id:your-company]</dd>
+      <dd>[text your-company]</dd>
     </dl>
     <dl class="post-adress">
       <dt><label for="zip">郵便番号</label><span class="req">必須</span></dt>
       <dd>
         <div>
+
           〒[text zip id:zip placeholder "1234567"]
           <p class="text conf-hide">都道府県、住所が自動で入力されます。</p>
+
         </div>
       </dd>
     </dl>
@@ -64,7 +96,7 @@
       <dd>[text city]</dd>
     </dl>
     <dl>
-      <dt><label for="your-tel">お電話番号</label><span class="req">必須</span></dt>
+      <dt><label for="your-tel">お電話番号<span class="req">必須</span></label></dt>
       <dd>[text your-tel]</dd>
     </dl>
     <dl>
@@ -75,23 +107,19 @@
       <dt><label for="your-email-confirm">メールアドレス(確認用)</label><span class="req">必須</span></dt>
       <dd>[email your-email-confirm]</dd>
     </dl>
-    <dl class="radio-button">
-      <dt>ご希望のご連絡方法<span class="req">必須</span></dt>
-      <dd>[radio radio class:radio-btns__item use_label_element default:1 "未選択" "メール" "電話" "どちらでも"]</dd>
-    </dl>
-    <dl>
-      <dt><label for="remarks">お問い合わせ内容</label></dt>
-      <dd>[textarea remarks id:remarks cols:33 rows:5]</dd>
-    </dl>
   </div>
+
   <div class="terms-box conf-hide">
-    <div class="main-text">※「<a href="/terms/" target="_blank" rel="noopener">ご利用規約</a>」「<a href="/privacypolicy/" target="_blank" rel="noopener">個人情報保護方針</a>」並びに下記の「個人情報の取り扱い」をお読みの上、ご送信ください。
-      （本フォームでは個人情報と紐付けてWeb閲覧履歴を取得しています。）</div>
+    <div class="main-text">
+      ※「<a href="/terms/" target="_blank" rel="noopener">ご利用規約</a>」「<a href="/privacypolicy/" target="_blank" rel="noopener">個人情報保護方針</a>」並びに下記の「個人情報の取り扱い」をお読みの上、ご送信ください。
+      （本フォームでは個人情報と紐付けてWeb閲覧履歴を取得しています。）
+    </div>
+    <!-- p-form__privacybox -->
     <div class="p-form__privacybox">
       <dl>
         <dt>個人情報の取り扱いについて</dt>
         <dd>
-          各種お問い合わせフォームよりご提供いただくお客様情報は、弊社の個人情報保護方針(<a href="/privacypolicy/" target="_blank" rel="noopener">http://localhost:10058/privacypolicy/</a>)に従い厳重に管理すると共に以下の通り取り扱います。
+          各種お問い合わせフォームよりご提供いただくお客様情報は、弊社の個人情報保護方針(<a href="/privacypolicy/" target="_blank" rel="noopener">https://geomarket.jp/privacypolicy/</a>)に従い厳重に管理すると共に以下の通り取り扱います。
           なお、弊社では、各業務の一部を委託先に委託し、当該委託先に対して必要な範囲で個人情報を委託する場合があります。この場合には、法令および弊社で定めた基準に従って適切な管理を行います。
           <dl>
             <dt>利用目的</dt>
@@ -126,10 +154,11 @@
         </dd>
       </dl>
     </div>
+    <!-- p-form__privacybox -->
   </div>
   <div class="checkbox -bottom">[checkbox check use_label_element class:checkbox__item "個人情報の取り扱いに同意しました。"]</div>
   <div class="button-wrap">
-<div class="submit">[submit "確認画面へ"]</div>
+    <div class="submit">[submit "確認画面へ"]</div>
   </div>
 </div>
-[multistep multistep-140 first_step "https://geomarket.staging-square.com/buy/contact/confirm/"]
+  [multistep multistep-836 first_step "https://geomarket.staging-square.com/repair/contact/confirm/"]

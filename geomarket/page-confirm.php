@@ -28,6 +28,11 @@
               入力内容をご確認のうえ、「送信する」ボタンを押してください。
         </p>
 
+        <?php elseif(strstr($url,'repair')): ?>
+        <h2 class="c-heading -main">修理・点検のお問い合わせ</h2>
+        <p class="p-contact__description">
+              入力内容をご確認のうえ、「送信する」ボタンを押してください。
+        </p>
 
         <?php elseif(strstr($url,'buy')): ?>
         <!-- 測量機器を探すのお問い合わせ -->
@@ -114,6 +119,9 @@
           <p class="p-contact__description">
               入力内容をご確認のうえ、「送信する」ボタンを押してください。
         </p>
+
+
+
           <?php endif; ?>
 
 

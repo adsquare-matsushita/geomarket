@@ -1,35 +1,36 @@
 <div class="p-form__content">
-  <div class="p-single__under-item screen-reader-text">
-    <div class="p-single__under-itemDetail">
-    <h3 class="c-heading">[text title size:60  default:get readonly]</h3>
-      <div class="p-single__under-itemDetailInner">
-        <dl>
-          <dt>商品コード</dt>
-          <dd>[text kiki-code size:60  default:get readonly ]</dd>
-        </dl>
-        <dl>
-          <dt>機種モデル</dt>
-          <dd>[text kiki-model size:60  default:get readonly ]</dd>
-        </dl>
-        <dl>
-          <dt>メーカー</dt>
-          <dd>[text kiki-maker size:60  default:get readonly ]</dd>
-        </dl>
-        <dl>
-          <dt>商品価格</dt>
-          <dd>[text  machine-price size:60 default:get readonly]</dd>
-        </dl>
-      </div>
-    </div>
-  </div>
-  <h3 class="c-heading -sideLine">お客様情報</h3>
-  <div class="p-form__content">
+  <h3 class="c-heading -sideLine">査定機種情報</h3>
+
+  <dl style="background-color: #fff4ed;padding: 1.5rem;">
+     <p style="font-weight: bold; margin: auto;">査定機器の写真 がある場合は、次の確認画面で添付が可能です。必要項目をご入力の上、確認画面にお進みください。</p>
+  </dl>
+  <dl>
+    <dt><label for="your-model">機種名<span class="req">必須</span></label></dt>
+    <dd>[text your-model id:your-model]</dd>
+  </dl>
+  <dl>
+    <dt><label for="your-model-number">機械番号</label></dt>
+    <dd>[text your-model-number id:your-model-number]
+      <p class="note">
+        ※機種番号とは？<br>
+        機種固有番号となります。<br>
+        ライカの場合：バッテリーケースの中に側板のシールにある番号です。<br>
+        トプコンの場合：機械正面左下にある番号です。
+      </p>
+    </dd>
+  </dl>
+  <dl>
+    <dt><label for="your-info">査定備考情報</label></dt>
+    <dd>[textarea your-info id:your-info cols:33 rows:5]</dd>
+  </dl>
+  <div class="inner-form">
+    <h3 class="c-heading -sideLine">お客様情報</h3>
     <dl>
       <dt><label for="your-know">当サイトを知ったきっかけ<span class="req">必須</span></label></dt>
       <dd class="checkbox">
         <div class="check-block">
           <div>
-          [checkbox your-know use_label_element class:checkbox__item "Yahoo!又はGoogle検索" "インターネット広告(バナー広告)" "ウェビナー" "メールマガジン" "調査士会会報" "ご紹介" "SNS(Facebook・Instagram・X)" "その他"]
+[checkbox your-know id:your-know class:checkbox__item use_label_element "Yahoo!又はGoogle検索" "インターネット広告(バナー広告)" "ウェビナー" "メールマガジン" "調査士会会報" "ご紹介" "SNS(Facebook・Instagram・X)" ]
 
           </div>
         </div>
@@ -41,17 +42,16 @@
     </dl>
     <dl>
       <dt><label for="your-kana">お名前（ふりがな）<span class="req">必須</span></label></dt>
-      <dd>[text your-kana ]</dd>
+      <dd>[text your-kana]</dd>
     </dl>
     <dl>
       <dt><label for="your-company">会社名</label></dt>
-      <dd>[text your-company id:your-company]</dd>
+      <dd>[text your-company]</dd>
     </dl>
     <dl class="post-adress">
       <dt><label for="zip">郵便番号</label><span class="req">必須</span></dt>
       <dd>
-        <div>
-        〒[text zip id:zip placeholder "1234567"]
+        <div>〒[text zip placeholder "1234567"]
           <p class="text conf-hide">都道府県、住所が自動で入力されます。</p>
         </div>
       </dd>
@@ -65,8 +65,8 @@
       <dd>[text city]</dd>
     </dl>
     <dl>
-      <dt><label for="your-tel">お電話番号</label><span class="req">必須</span></dt>
-      <dd>[text your-tel ]</dd>
+      <dt><label for="your-tel">お電話番号<span class="req">必須</span></label></dt>
+      <dd>[text your-tel]</dd>
     </dl>
     <dl>
       <dt><label for="your-email">メールアドレス</label><span class="req">必須</span></dt>
@@ -74,14 +74,10 @@
     </dl>
     <dl>
       <dt><label for="your-email-confirm">メールアドレス(確認用)</label><span class="req">必須</span></dt>
-      <dd>[email your-email-confirm ]</dd>
-    </dl>
-    <dl class="radio-button">
-      <dt>ご希望のお支払い方法<span class="req">必須</span></dt>
-      <dd>[radio radio class:radio-btns__item use_label_element default:1 "未選択" "銀行振り込み"]</dd>
+      <dd>[email your-email-confirm]</dd>
     </dl>
     <dl>
-      <dt><label for="remarks">お問い合わせ内容</label></dt>
+      <dt><label for="remarks">備考</label></dt>
       <dd>[textarea remarks cols:33 rows:5]</dd>
     </dl>
   </div>
@@ -106,9 +102,9 @@
           </dl>
           <dl>
             <dt>連絡先</dt>
-            <dd>個人情報お問合せ窓口<br>
-              住所 : 〒010-1613 秋田県秋田市新屋朝日町1-12<br>
-              TEL : 050-3645-2272<br>
+            <dd>個人情報お問合せ窓口
+              住所 : 〒010-1613 秋田県秋田市新屋朝日町1-12
+              TEL : 050-3645-2272
               メールアドレス : akisoku@at45.aisantec.jp
               <ul>
                 <li>・開示などに関するお問合せは 有限会社秋測 個人情報お問合せ窓口まで、お電話にて、ご連絡ください。</li>
@@ -125,7 +121,7 @@
   </div>
             <div class="checkbox -bottom">[checkbox check use_label_element class:checkbox__item "個人情報の取り扱いに同意しました。"]</div>
   <div class="button-wrap">
-    <div class="submit">[submit "確認画面へ"]</div>
+<div class="submit">[submit "確認画面へ"]</div>
   </div>
 </div>
-    [multistep multistep-310 first_step "https://geomarket.staging-square.com/buy/purchase/purchase-confirm/"]
+[multistep multistep-472 first_step "https://geomarket.staging-square.com/reuse/assessment/confirm/"]

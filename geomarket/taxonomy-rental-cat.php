@@ -17,7 +17,7 @@ $taxonomy_name = $taxonomy->name;
               <h2 class="c-heading -subL -rental">測量機器のレンタル</h2>
               <p class="p-hero-sub__text">
                 i-Constructionや測量調査をはじめ、様々な業界で3Dの需要が急増しており、 最新技術の導入が成功の鍵となります。
-                ジオマーケットでは、最新の3Dレーザースキャナーや杭ナビなどの最新機器をはじめ、幅広い測量機器を取り揃えたレンタルサービスを提供しています。必要な期間だけ、皆さまの業務に合わせてレンタルが可能です。
+                ジオマーケットでは、最新の3Dレーザスキャナや杭ナビなどの最新機器をはじめ、幅広い測量機器を取り揃えたレンタルサービスを提供しています。必要な期間だけ、皆さまの業務に合わせてレンタルが可能です。
               </p>
               <div class="p-hero-sub__buttonWrap -rental">
                 <a href="<?php echo esc_url(home_url()); ?>/rental/contact/" class="c-button -orange -sub">レンタルのお見積もり</a>

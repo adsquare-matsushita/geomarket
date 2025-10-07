@@ -456,7 +456,6 @@
         <div class="l-container">
           <h2 class="c-heading -main -line">お知らせ</h2>
           <div class="p-news__inner js_tab">
-            <a href="<?php echo esc_url(home_url()); ?>/information" class="p-news__button"><span>VIEW ALL</span></a>
             <ul class="p-news__cat -main tab js_tab_btn">
               <li class="p-news__catItem is-tab"><span>全てのニュース</span></li>
               <li class="p-news__catItem"><span>キャンペーン情報</span></li>
@@ -465,36 +464,36 @@
             </ul>
             <div class="js_tab_content">
               <div class="is-tab">
-                <?php
-                  // 先頭表示投稿を取得
-                  $sticky_posts = get_option('sticky_posts');
-                  // 先頭表示投稿がない場合に空の配列に設定
-                  if (empty($sticky_posts)) {
+              <?php
+                // 先頭表示投稿を取得
+                $sticky_posts = get_option('sticky_posts');
+                if (empty($sticky_posts)) {
                     $sticky_posts = array(0);
-                  }
-                  $sticky_query = new WP_Query(
-                    array(
-                      'post_type'      => 'post',
-                      'posts_per_page' => 5,
-                      'post__in'       => $sticky_posts,
-                      'orderby'        => 'date',
-                      'order'          => 'desc',
-                    )
-                  );
+                }
 
-                  // 先頭表示投稿の数を取得
-                  $sticky_count = $sticky_query->found_posts;
-
-                  // 通常の投稿を取得
-                  $normal_query = new WP_Query(
+                $sticky_query = new WP_Query(
                     array(
-                      'post_type'      => 'post',
-                      'posts_per_page' => 5 - $sticky_count,
-                      'post__not_in'   => $sticky_posts,
-                      'orderby'        => 'date',
-                      'order'          => 'desc',
+                        'post_type'      => 'post',
+                        'posts_per_page' => 5,
+                        'post__in'       => $sticky_posts,
+                        'category__not_in' => array(57), // useful カテゴリのIDを除外
+                        'orderby'        => 'date',
+                        'order'          => 'desc',
                     )
-                  );
+                );
+
+                $sticky_count = $sticky_query->found_posts;
+
+                $normal_query = new WP_Query(
+                    array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => max(0, 5 - $sticky_count),
+                        'post__not_in'   => $sticky_posts,
+                        'category__not_in' => array(57), // useful カテゴリのIDを除外
+                        'orderby'        => 'date',
+                        'order'          => 'desc',
+                    )
+                );
                 ?>
                 <?php if ($sticky_query->have_posts() || $normal_query->have_posts()) : ?>
                   <ul class="p-news__list">
@@ -584,7 +583,7 @@
                           <a href="<?php the_permalink(); ?>">
                             <span>
                               <time><?php the_time('Y/m/d'); ?></time><span class="cat"><?php $cats = get_the_category();
-                                                                                        echo $cats[0]->cat_name; ?></span>
+                                echo $cats[0]->cat_name; ?></span>
                               <h3><?php the_title(); ?></h3>
                             </span>
                             <i></i>
@@ -631,6 +630,53 @@
                     endif; ?>
               </div>
             </div>
+            <a href="<?php echo esc_url(home_url()); ?>/information" class="p-news__button"><span>すべて見る</span></a>
+          </div>
+        </div>
+        <div class="l-container p-useful">
+          <h2 class="c-heading -main -line">お役立ち情報</h2>
+          <div class="p-news__inner js_tab">
+            <ul class="p-news__cat -main tab js_tab_btn">
+              <li class="p-news__catItem"><span>
+                測量機器の使い方やメンテナンス方法、<br class="pc-hide">
+                役立つノウハウを発信
+              </span></li>
+            </ul>
+            <div class="js_tab_content">
+              <div class="is-tab">
+                <?php
+                  $news_query = new WP_Query(
+                    array(
+                      'post_type'      => 'post', //投稿タイプの指定
+                      'posts_per_page' => 5,
+                      'orderby' => 'date',
+                      'order' => 'desc',
+                      'category_name' => 'useful',
+                    )
+                  );
+                ?>
+                <?php if ($news_query->have_posts()) : ?>
+                  <ul class="p-news__list">
+                      <?php while ($news_query->have_posts()) : ?>
+                        <?php $news_query->the_post(); ?>
+                        <li class="p-news__listItem">
+                          <a href="<?php the_permalink(); ?>">
+                            <span>
+                              <time><?php the_time('Y/m/d'); ?></time>
+                              <h3><?php the_title(); ?></h3>
+                            </span>
+                            <i></i>
+                          </a>
+                        </li>
+                      <?php endwhile; ?>
+                  </ul>
+                <?php else : ?>
+                  <p>まだ投稿がありません。</p>
+                <?php wp_reset_postdata();
+                    endif; ?>
+              </div>
+            </div>
+            <a href="<?php echo esc_url(home_url()); ?>/useful" class="p-news__button"><span>すべて見る</span></a>
           </div>
         </div>
       </div>
