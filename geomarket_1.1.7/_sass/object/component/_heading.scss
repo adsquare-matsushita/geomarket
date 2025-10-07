@@ -1,0 +1,291 @@
+@use "sass:math";
+/*
+  Heading
+*/
+
+.c-heading {
+  font-weight: 700;
+  position: relative;
+
+  &.-main {
+    font-size:1.714288rem;
+    display: flex;
+    align-items: flex-end;
+    @include mq(lap) {
+      font-size: 2.2rem;
+    }
+    
+    .u-fill__name{
+      font-size: 1.42857rem;
+      color: #767676;
+      font-weight: 500;
+      margin-left: 1rem;
+      padding-bottom: 7px;
+    }
+  }
+
+  &.-sub {
+    font-size: 1.14286rem;
+
+    @include mq(lap) {
+      font-size:1.714288rem;
+    }
+  }
+
+  &.-subL {
+    font-size: 2rem;
+
+    @include mq(lap) {
+      font-size: 2.5rem;
+    }
+
+    @include mq(l-lap) {
+      font-size: 2.8rem;
+    }
+  }
+
+  &.buy-title,
+  &.rental-title {
+    span {
+      font-size: 1.14286rem;
+
+      @include mq(lap) {
+        font-size:1.714288rem;
+      }
+
+      .color {
+        color: $accent-color;
+        font-size:1.714288rem;
+
+        @include mq(lap) {
+          font-size: 1.714288rem;
+        }
+      }
+    }
+
+    .is-remove {
+      display: inline-block;
+      padding-top: 3.5rem;
+
+      @include mq(lap) {
+        padding-top: 2rem;
+      }
+    }
+  }
+
+  &.-seek {
+    padding-left: 2.25rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      left: 0;
+      background: url(../../assets/images/top/seek-icon.svg) no-repeat;
+      background-size: contain;
+      width: 32px;
+      height: 32px;
+    }
+
+    @include mq(lap) {
+      padding-left: 3.5rem;
+      padding-bottom: 0.4rem;
+
+      &::before {
+        width: 44px;
+        height: 44px;
+        background: url(../../assets/images/top/seek-icon.svg) no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+
+  &.-campany {
+    padding-left: 2.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      left: 0;
+      background: url(../../assets/images/top/campany-icon.svg) no-repeat;
+      background-size: contain;
+      width: 32px;
+      height: 32px;
+    }
+
+    @include mq(lap) {
+      padding-left: 3.5rem;
+      padding-bottom: 0.4rem;
+
+      &::before {
+        width: 44px;
+        height: 44px;
+        background: url(../../assets/images/top/campany-icon.svg) no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+
+  &.-rental {
+    padding-left: 2.5rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      left: 0;
+      background: url(../../assets/images/top/rental-icon-bk.svg) no-repeat;
+      background-size: contain;
+      width: 32px;
+      height: 32px;
+    }
+
+    @include mq(lap) {
+      padding-left: 3.5rem;
+
+      &::before {
+        width: 44px;
+        height: 44px;
+        background: url(../../assets/images/top/rental-icon-bk.svg) no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  &.-reuse {
+    padding-left: 3.25rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      bottom: 0;
+      margin: 5px 0 auto;
+      left: 0;
+      background: url(../../assets/images/under/reuse-icon-bk.svg) no-repeat;
+      background-size: contain;
+      width: 36px;
+      height: 36px;
+      @include mq(lap) {
+        margin: 15px 0 auto;
+      }
+
+
+    }
+
+    @include mq(l-lap) {
+      padding-left: 49px;
+
+      &::before {
+        width: 44px;
+        height: 44px;
+        background: url(../../assets/images/under/reuse-icon-bk.svg) no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  &.-line {
+    margin-bottom: 15px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      left: 0;
+      height: 2px;
+      background-color: $accent-color;
+      width: 60px;
+      bottom: -8px;
+    }
+
+    @include mq(lap) {
+      margin-bottom: 5px;
+
+      &::after {
+        bottom: -3px;
+        width: 40px;
+      }
+    }
+  }
+
+  &.-subLine {
+    margin-bottom: 20px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      left: 0;
+      height: 2px;
+      background-color: $accent-color;
+      width: 40px;
+      bottom: -5px;
+    }
+
+    @include mq(lap) {
+      margin-bottom: 30px;
+
+      &::after {
+        bottom: -3px;
+        width: 40px;
+      }
+    }
+  }
+
+  &.-sideLine {
+    padding-left: 0.75rem;
+    position: relative;
+    font-size: 1.285711rem;
+
+    &::before {
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      left: 0;
+      position: absolute;
+      content: "";
+      width: 3px;
+      height: 70%;
+      background-color: $accent-color;
+    }
+
+    @include mq(lap) {
+      font-size: 1.42857rem;
+    }
+  }
+
+  .content {
+    display: inline-block;
+
+    font-size: 1rem;;
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+
+    @include mq(lap) {
+    font-size: 1.285711rem;
+      position: static;
+      margin-left: 1rem;
+    }
+  }
+
+  &.-singleBuy {
+    font-size: 1rem;;
+
+    @include mq(lap) {
+      font-size:1.714288rem;
+    }
+  }
+}

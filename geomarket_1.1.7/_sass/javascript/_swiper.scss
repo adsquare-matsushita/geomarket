@@ -1,0 +1,486 @@
+@use "sass:math";
+
+.wrap {
+  width: 80%;
+}
+
+.swiper-container {
+  &.-top {
+    position: relative;
+
+    @include mq(lap) {
+      margin-left: 5%;
+    }
+  }
+
+  &.-info {
+    position: relative;
+    width: 90%;
+    margin: auto;
+
+    @include mq(lap) {
+      margin-left: 8%;
+      width: 90%;
+    }
+  }
+
+  &.-single {
+    width: calc(95% - 15.1%);
+    margin-left: auto;
+    margin-right: 0;
+    position: relative;
+  }
+
+  &.-single__reration {
+    overflow: visible;
+    padding-top: 2rem;
+
+    @include mq(lap) {
+      padding-top: 2.5rem;
+    }
+  }
+
+  &.-reuse {
+    margin: 2rem 0 4rem;
+  }
+}
+
+//アイテムのサイズ
+.swiper-slide {
+  &.-info {
+    width: 100% ;
+
+    @include mq(lap) {
+    }
+
+    a {
+      color: #4f4d4d;
+      display: block;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &.-top {
+    max-width: 260px;
+    width: 100% !important;
+    height: auto;
+
+    @include mq(lap) {
+      max-width:240px;
+    }
+
+    a {
+      // color: #4f4d4d;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      height: 100%;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        min-height: 290px;
+        max-height: 350px;
+      }
+    }
+  }
+
+  &.-single {
+    img {
+      width: 100%;
+    }
+  }
+
+  &.-thumbs {
+    width: 100% !important;
+    position: relative;
+
+    @include mq(lap) {}
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      top: 0;
+      left: 0;
+    }
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  &.-reuse {
+    max-width: 245px;
+    width: 100% !important;
+
+    @include mq(lap) {
+      max-width: 260px;
+    }
+  }
+}
+
+.swiper-button__container {
+  position: relative;
+  width: 100%;
+  // bottom: -3rem;
+  @include mq(lap) {
+    bottom: initial;
+  }
+
+  &.-top {
+    // top: -280px;
+
+    @include mq(lap) {
+      max-width: 320px;
+      margin: 0 auto;
+      // top: -26px;
+      margin-top: 4rem;
+    }
+  }
+
+  &.-info {
+
+    @include mq(lap) {
+    }
+  }
+
+  &.-hero {
+    bottom: 35px;
+
+    @include mq(lap) {
+      width: calc(100% - 224px);
+      margin-left: auto;
+    }
+  }
+
+  &.-reuse {
+    top: -250px;
+
+    @include mq(lap) {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.swiper-button__wrap {
+  position: absolute;
+  width: 100%;
+
+  &.-info {
+    @include mq(lap) {
+      top: -60px;
+      right: 0;
+      padding-top: 0;
+
+      max-width: 320px;
+      margin-left: auto;
+      margin-top: 0;
+    }
+  }
+}
+
+// ドットの調整
+.swiper-pagination {
+  // position: absolute;
+  // transform: translateX(-50%);
+  // left: 50%;
+
+  span {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &.-top {
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: -285px;
+
+    @include mq(lap) {
+      bottom: -7px;
+    }
+  }
+
+  &.-hero {
+    @include mq(lap) {}
+  }
+
+  &.-info {
+    top: -12px;
+
+    @include mq(lap) {
+      top: -4px;
+    }
+  }
+
+  &.-reuse {
+    bottom: -230px;
+
+    @include mq(lap) {
+      bottom: -20px;
+    }
+  }
+
+  &.-single {
+    margin-top: 10px;
+  }
+}
+
+// ドットのカラー
+.swiper-pagination-bullet {
+  background-color: #fff;
+  border: 1px solid $accent-color;
+  opacity: 1;
+}
+
+// アクティブなドットのカラー
+.swiper-pagination-bullet-active {
+  background: $accent-color;
+}
+
+//ボタンの大きさ
+.swiper-button-prev,
+.swiper-button-next {
+  width: 55px;
+  height: 55px;
+  position: absolute;    
+  bottom: 260px;
+  top:initial;  
+  @include mq(lap) {
+    top: 50%;
+  }
+}
+
+.p-info__wrap{
+  .swiper-button-prev,
+  .swiper-button-next {  
+    bottom: 36dvw;
+    top:initial;  
+    @include mq(lap) {
+      top: 50%;
+    }
+  }
+}
+//ボタンの位置
+.swiper-button-prev {
+  left: 5%;
+}
+
+.swiper-button-next {
+  right: 5%;
+}
+
+// ボタンを画像で表示
+.swiper-button-prev {
+  background: url(../../assets/images/common/slider-buttonL.svg) no-repeat;
+  background-size: contain;
+}
+
+.swiper-button-prev::after {
+  content: "";
+}
+
+.swiper-button-next {
+  background: url(../../assets/images/common/slider-buttonR.svg) no-repeat;
+  background-size: contain;
+}
+
+.swiper-button-next::after {
+  content: "";
+}
+
+// サムネつきスライダー
+.swiper-my-pagination .swiper-pagination-bullet {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+}
+
+.swiper-container-horizontal>.swiper-my-pagination.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0;
+}
+
+.swiper-my-pagination img {
+  box-shadow: none;
+  // margin: 0;
+  vertical-align: bottom;
+}
+
+.swiper-my-pagination {
+  // display: table;
+  // table-layout: fixed;
+}
+
+.swiper-my-pagination .swiper-pagination-bullet {
+  // display: table-cell;
+  border: transparent;
+  background: transparent;
+  opacity: 1;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+  }
+}
+
+.swiper-my-pagination .swiper-pagination-bullet-active {
+  border: 1px solid $accent-color;
+
+  &::before {
+    background: transparent;
+  }
+}
+
+.swiper-my-pagination {
+  &.pagination-single {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 15.1%;
+    width: 100%;
+
+    span {
+      display: block;
+      width: auto;
+      position: relative;
+
+      &:first-child {}
+
+      &:not(:first-child) {
+        margin-top: 9%;
+      }
+    }
+  }
+}
+
+// .swiper-container-horizontal > .swiper-pagination-bullets,
+// .swiper-pagination-custom,
+// .swiper-pagination-fraction {
+//   width: auto;
+// }
+
+.swiper-singleThumbs {
+  // z-index: 10;
+  // // position: absolute;
+  // top: 0;
+  // left: 0;
+  // max-width: 15.1% !important;
+  // width: 100%;
+
+  // ul {
+  //   li {
+  //     display: block;
+  //     width: auto;
+  //     position: relative;
+  //   }
+  // }
+}
+
+.swiper-wrapper {
+  &.-thumbs {
+    // height: auto !important;
+  }
+}
+
+//サムネイル
+
+.gallery-thumbs {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  // margin-right: 20px;
+  width: 17%;
+
+  @include mq(lap) {
+    // width: auto;
+  }
+}
+
+.gallery-thumbs .swiper-slide {
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.gallery-top {
+  height: 100%;
+}
+
+.gallery-top .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.swiper-container-wrap {
+  width: calc(83% - 10px);
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.swiper-slide-thumb-active {
+  border: 1px solid $accent-color;
+
+  &::after {
+    display: none !important;
+  }
+}
+
+.swiper-scrollbar {
+  // top: 280px;]    
+  position: relative;
+  height: 4px;
+  width: 200px;
+  margin: 20px auto 0;
+
+  @include mq(lap) {
+    top: 0px;
+    margin: 0 auto;
+    width: 200px;
+  }
+}
+
+.swiper-scrollbar-drag {
+  background: rgba(232, 109, 33, 0.7);
+  border-radius: 0;
+  width: 100%;
+}
+
+.swiper-button__container.-top {
+  // top: -280px;
+
+  @include mq(lap) {
+    max-width: 380px;
+    margin: 40px auto;
+    min-height: 10px;
+
+  }
+}

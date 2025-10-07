@@ -1,0 +1,112 @@
+@use "sass:math";
+
+/*
+  Screen Reader Text
+*/
+.screen-reader-text {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+}
+.pagenation #text {
+  display: none;
+}
+.pan {
+  font-size: 1rem;
+  @include mq(lap) {
+    font-size: 1.14286rem;
+  }
+  &.bg-gray {
+    background-color: $base-color;
+
+    .breadcrumbs {
+      padding-bottom: 0;
+
+      @include mq(lap) {
+        padding-top: 2rem;
+      }
+    }
+  }
+
+  br{
+    display: none;
+  }
+
+  ol {
+    padding: 15px 0;
+
+    @include mq(lap) {
+      padding: 15px 0;
+    }
+
+    li {
+      display: inline;
+    }
+
+    li a {
+      text-decoration: none;
+      color: $primary-text-color;
+      position: relative;
+      transition: 0.3s ease-in-out;
+
+      &:not(:last-child) {
+        margin-right: 1.6rem;
+      }
+
+      &:not(:last-child) ::after {
+        position: absolute;
+        content: "";
+        border-top: 1px solid #c3c1c3;
+        border-right: 1px solid #c3c1c3;
+        width: 0.6rem;
+        height: 0.6rem;
+        transform: rotate(45deg);
+        top: 3px;
+        bottom: 0;
+        margin: auto 0;
+        font-size: inherit;
+        right: -1rem;
+      }
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      &.current-item {
+        color: $accent-color;
+      }
+    }
+
+    li.current-item {
+      color: $accent-color;
+      pointer-events: none;
+
+      span::after {
+        display: none;
+      }
+    }
+  }
+
+  &-top {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0;
+
+    @include mq(lap) {
+      top: 10px;
+    }
+  }
+
+  &-bottom {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+
+    @include mq(lap) {
+      bottom: 10px;
+    }
+  }
+}

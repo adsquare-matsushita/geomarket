@@ -1,0 +1,261 @@
+@use "sass:math";
+/*
+  Media
+*/
+
+.c-media {
+  display: flex;
+  text-decoration: none;
+  color: $primary-text-color;
+  width: 100%;
+  align-items: stretch;
+  height: 100%;
+  position: relative;
+
+  &:hover {
+    box-shadow: $box-shadow;
+
+    &::after {
+      transform: scale(1, 1);
+      transform-origin: left top;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: $accent-color;
+    display: inline-block;
+    transform: scale(0, 1);
+    transform-origin: right top;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__head {
+    position: relative;
+    width: 35%;
+    height: inherit;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__thumbnail {
+    height: 100%;
+
+    @include mq(lap) {}
+
+    img {
+      width: 100%;
+      height: inherit;
+      object-fit: cover;
+    }
+  }
+
+  &__body {
+    background-color: $color-white;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-bottom: 1px solid $color-gray2;
+    border-right: 1px solid $color-gray2;
+    border-top: 1px solid $color-gray2;
+    height: inherit;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .cat-wrap {
+      span {
+        display: inline-block;
+
+        &:not(:last-child) {
+          margin-right: 5px;
+        }
+
+        font-size: 0.86rem;
+
+        @include mq(tab) {
+          font-size: 1rem;;
+        }
+      }
+    }
+
+    .price-wrap {
+      position: relative;
+      margin-top: 5px;
+
+      @include mq(sp) {
+        display: block;
+      }
+
+      @include mq(l-lap) {
+        display: flex;
+        align-items: center;
+      }
+
+      .price {
+        &.-cam {
+          position: relative;
+
+          @include mq(l-lap) {
+            padding-left: 1.5rem;
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            left: 5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 13.9px;
+            border-color: transparent transparent transparent $accent-color;
+            display: none;
+
+            @include mq(l-lap) {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .maker {
+      font-size: 0.86rem;
+
+      @include mq(tab) {
+        font-size: 1rem;;
+      }
+    }
+
+    .price {
+      &.-cam {
+        color: $accent-color;
+      }
+
+      .cat {
+        line-height: 1.5;
+
+        &-text {
+          display: block;
+          margin-top: 5px;
+          font-size: 0.86rem;
+        }
+
+        em {
+          font-weight: 700;
+          font-size: 1.14286rem;
+
+          @include mq(s-sp) {
+            font-size:1.714288rem;
+          }
+
+          @include mq(lap) {
+            font-size: 2.2rem;
+          }
+        }
+
+        .yen {
+          font-size: 0.86rem;
+          font-weight: 700;
+
+          @include mq(lap) {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+
+    p.button {
+      color: $accent-color;
+      margin-top: 5px;
+      font-size: 1rem;;
+      font-family: $font-set-en;
+      letter-spacing: 0.1rem;
+
+      // display: none;
+      @include mq(lap) {}
+    }
+  }
+
+  .effect {
+    position: absolute;
+    font-weight: 700;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.1rem;
+    font-size: 0.86rem;
+
+    @include mq(l-lap) {
+      font-size: 1.14286rem;
+    }
+
+    &.-new {
+      color: $color-white;
+      background-color: $color-red;
+      width: 3rem;
+      height: 3rem;
+      font-family: $font-set-en;
+
+      @include mq(l-lap) {
+        width: 4.5rem;
+        height: 4.5rem;
+      }
+    }
+
+    &.-oppo {
+      color: $color-white;
+      background-color: #3e3a39;
+      width: 3.25rem;
+      height: 3.25rem;
+
+      @include mq(tab) {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      @include mq(l-lap) {
+        width: 4.5rem;
+        height: 4.5rem;
+      }
+    }
+
+    &.-sould {
+      color: #c1c1c1;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      font-size: 1.14286rem;
+      font-family: $font-set-en;
+
+      @include mq(tab) {
+      font-size: 1.285711rem;
+      }
+
+      @include mq(l-lap) {
+        font-size: 1.714288rem;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 1rem;;
+
+    @include mq(lap) {
+      font-size: 1.14286rem;
+    }
+  }
+}

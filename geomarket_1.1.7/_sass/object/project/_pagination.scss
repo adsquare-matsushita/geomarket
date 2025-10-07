@@ -1,0 +1,212 @@
+@use "sass:math";
+/*
+  Pagination
+*/
+
+.pagenation {
+  margin-top: 1.5rem;
+  text-align: center;
+
+  @include mq(lap) {
+    margin-top: 2rem;
+  }
+}
+
+.page-numbers {
+  text-align: center;
+  display: inline-block;
+  width: set-size(48px);
+  height: set-size(48px);
+  padding: set-size(math.div((48px - 20px), 2));
+  border-radius: 50%;
+  background-color: #fff;
+  text-decoration: none;
+  color: $accent-color;
+  line-height: 1;
+  font-weight: bold;
+  vertical-align: top;
+  font-family: $font-set-en;
+  font-size: 1rem;
+
+  @include mq(lap) {
+    width: set-size(62px);
+    height: set-size(62px);
+    padding: set-size(math.div((62px - 20px), 2));
+  }
+
+  &[href]:hover {
+    opacity: 0.5;
+  }
+
+  &.current {
+    background-color: $color-white;
+    color: $accent-color;
+    border: 1px solid $accent-color;
+  }
+
+  &.prev,
+  &.next {
+    position: relative;
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: set-size(8px);
+      height: set-size(8px);
+      transform: rotate(45deg);
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:before {
+      background-color: $accent-color;
+    }
+
+    &:after {
+      background-color: #fff;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &.prev {
+
+    &:before,
+    &:after {
+      right: 0;
+    }
+
+    &:before {
+      left: set-size(4px);
+    }
+
+    &:after {
+      left: set-size(12px);
+    }
+  }
+
+  &.next {
+
+    &:before,
+    &:after {
+      left: 0;
+      bottom: 3px;
+    }
+
+    &:before {
+      right: set-size(4px);
+    }
+
+    &:after {
+      right: set-size(12px);
+    }
+  }
+
+  &+& {
+    margin-left: 0.5rem;
+
+    @include mq(lap) {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.nav {
+  &-links {
+    overflow: hidden;
+  }
+
+  &-previous,
+  &-next {
+    width: 49%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    a:first-line {
+      font-size:1.714288rem;
+    }
+  }
+
+  &-previous {
+    float: left;
+  }
+
+  &-next {
+    float: right;
+    text-align: right;
+  }
+}
+
+// singleページ用
+.single-navigation-list {
+  text-align: center;
+  margin: 50px 0;
+
+  &__item {
+    display: inline-block;
+
+    a {
+      color: $accent-color;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      font-weight: 700;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .navitop {
+    margin: 0 1.5rem;
+
+    @include mq(tab) {
+      margin: 0 80px;
+    }
+  }
+
+  .navileft a {
+    padding-left: 1.5rem;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      background: url(../../assets/images/common/arrow-orange.svg) no-repeat;
+      background-size: contain;
+      width: 14px;
+      height: 12px;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      transform: rotate(-180deg);
+    }
+  }
+
+  .naviright a {
+    padding-right: 1.5rem;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      background: url(../../assets/images/common/arrow-orange.svg) no-repeat;
+      background-size: contain;
+      width: 14px;
+      height: 12px;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@use "sass:math";
+/*
+  faq
+*/
+
+.p-faq {
+  
+  font-size: 1rem;
+  padding-bottom: 2rem;
+  @include mq(lap) {
+    margin-top: 3.5rem;
+    padding-bottom: 1.5rem;
+  }
+  &.-sub {
+    dl {
+      border-bottom: 1px solid $color-lightGray;
+      padding-bottom: 1rem;
+      margin-top: 2rem;
+
+      @include mq(lap) {
+        margin-top: 3.5rem;
+        padding-bottom: 1.5rem;
+      }
+
+      dt {
+        font-weight: 500;
+        padding-left: 2rem;
+        position: relative;
+        cursor: pointer;
+
+        @include mq(lap) {
+          font-size: 1.285715rem;
+        }
+
+        &::before,
+        &::after {
+          position: absolute;
+        }
+
+        &::before {
+          content: "Q";
+          color: $accent-color;
+          font-size: 1.5rem;
+          font-family: $font-set-en;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          font-weight: 500;
+
+          @include mq(lap) {
+            font-size:1.714288rem;
+          }
+        }
+
+        &::after {
+          content: "";
+          top: 0;
+          bottom: 0;
+          margin: auto 0;
+          border-right: 1px solid $accent-color;
+          border-top: 1px solid $accent-color;
+          transform: rotate(135deg);
+          width: 0.5rem;
+          height: 0.5rem;
+          right: 2px;
+          transition: transform 0.3s ease-in-out;
+        }
+
+        span {
+          width: 92%;
+          display: inline-block;
+        }
+
+        &.is-active {
+          &::after {
+            transform: rotate(-45deg);
+            transition: transform 0.3s ease-in-out;
+          }
+        }
+      }
+
+      dd {
+        padding-left: 2rem;
+        position: relative;
+        margin-top: 1rem;
+        display: none;
+
+        @include mq(lap) {
+          font-size: 1 rem;
+        }
+
+        .newLine {
+          margin-top: 10px;
+        }
+
+        .note {
+          font-size: 12px;
+        }
+
+        a {
+          color: $accent-color;
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+
+        &::before {
+          position: absolute;
+          content: "A";
+          color: $accent-color;
+          font-size: 1.25rem;
+          font-family: $font-set-en;
+          left: 0;
+          top: 0;
+          font-weight: 500;
+          top: -6px;
+
+          @include mq(lap) {
+            font-size:1.714288rem;
+          }
+        }
+
+        span {
+          width: 92%;
+          display: inline-block;
+        }
+      }
+
+      &:not(:first-child) {
+        margin-top: 1rem;
+
+        @include mq(lap) {
+          margin-top: 1.5rem;
+        }
+      }
+    }
+  }
+}

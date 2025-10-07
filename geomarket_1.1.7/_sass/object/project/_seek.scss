@@ -1,0 +1,417 @@
+@use "sass:math";
+/*
+  Button
+*/
+
+
+.p-seek {
+  background-color: $base-color;
+
+  &__under {}
+
+  &__list {
+    display: grid;
+    gap: 20px 0;
+
+    &.-card {
+      @include mq(s-sp) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      @include mq(desk) {
+        gap: 30px;
+      }
+
+      &::after {
+        display: block;
+        content: "";
+
+        @include mq(s-sp) {
+          width: calc(50% - 10px);
+        }
+
+        @include mq(desk) {
+          width: calc(33.3% - 20px);
+        }
+      }
+
+      &.is-change {
+        display: grid;
+        gap: 20px 0;
+
+        @include mq(tab) {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    &.-rental {
+      padding-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 10px;
+
+      @include mq(lap) {
+        grid-template-columns: repeat(2, 1fr);
+        padding-top: 2rem;
+        gap: 15px;
+      }
+
+      li {
+        width: auto;
+      }
+
+      .p-seek__listItem {
+        .c-card {
+          display: flex;
+          flex-direction: row;
+
+          &__head {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+
+          &__body {
+            width: 80%;
+            border-left: none;
+            border-top: 1px solid $color-gray2;
+          }
+
+          &__title {
+            font-size: 1rem;;
+
+            @include mq(lap) {
+              font-size: 1.14286rem;
+            }
+          }
+
+          .desc {
+            font-size: 0.86rem;
+            padding-top: 1.5rem;
+            line-height: 1.5;
+
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 5;
+            font-weight: 500;
+
+            @include mq(lap) {
+              font-size: 1rem;;
+            }
+          }
+        }
+      }
+    }
+
+    // &.-media {
+    // }
+  }
+
+  &__listItem {
+    &.-card {
+      @include mq(s-sp) {
+        width: calc(50% - 10px);
+      }
+
+      @include mq(desk) {
+        width: calc(33.3% - 20px);
+      }
+
+      &.is-change {
+        width: 100%;
+
+        @include mq(tab) {
+          width: calc(50% - 10px);
+        }
+      }
+
+      .c-card {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        height: 100%;
+
+        &.is-change {
+          display: flex;
+          text-decoration: none;
+          color: $primary-text-color;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          flex-direction: row;
+        }
+
+        &__body {
+          padding: 0.5rem;
+
+          @include mq(tab) {
+            padding: 1rem;
+          }
+
+          &.is-change {
+            height: 100%;
+            padding: 0.5rem 0.5rem 0.5rem 1rem;
+            border-bottom: 1px solid $color-gray2;
+            border-right: 1px solid $color-gray2;
+            border-top: 1px solid $color-gray2;
+            border-left: none;
+            height: inherit;
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+        }
+
+        .price {
+          .cam {
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              margin: auto 0;
+              left: 5px;
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 8px 0 8px 13.9px;
+              border-color: transparent transparent transparent $accent-color;
+
+              @include mq(s-sp) {
+                display: none;
+              }
+
+              @include mq(tab) {
+                display: block;
+                left: 9px;
+              }
+            }
+          }
+
+          .cat {
+            &-text {
+              display: block;
+              font-size: 0.844rem;
+
+              @include mq(s-sp) {
+                // margin-top: 10px;
+              }
+            }
+
+            em {
+              font-size: 1.25rem;
+
+              @include mq(s-sp) {
+                font-size: 1.25rem;
+              }
+
+              @include mq(tab) {
+                font-size:1.714288rem;
+              }
+
+              @include mq(desk) {
+                font-size: 1.14286rem;
+              }
+
+              @include mq(l-lap) {
+                font-size: 1.6rem;
+              }
+
+              &.is-change {
+                font-size:1.714288rem;
+
+                @include mq(lap) {
+                  font-size: 1.6rem;
+                }
+
+                @include mq(l-lap) {
+                  font-size: 1.6rem;
+                }
+              }
+            }
+
+            .yen {
+              font-size: 0.86rem;
+              font-weight: 700;
+
+              @include mq(lap) {
+                font-size: 1.25rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // &.-media {
+
+    // }
+  }
+
+  &__infoWrap {
+    .result {
+      @include mq(lap) {
+        text-align: right;
+      }
+
+      span {
+        display: inline-block;
+        font-size: 1rem;
+        @include mq(lap) {
+          font-size: 1.14286rem;
+        }
+      }
+
+      em {
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        font-size: 1.43rem;
+
+        @include mq(tab) {
+          font-size:1.714288rem;
+        }
+      }
+    }
+  }
+
+  &__infoWrap {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  &__rowWrap {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &__rowList {
+    margin: 1.75rem 0 1.75rem;
+
+    @include mq(tab) {}
+  }
+
+  &__rowItem {
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+
+    @include mq(tab) {}
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 1px;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        background-color: #b7b7b7;
+        height: 20px;
+        right: -11px;
+
+        @include mq(tab) {
+          height: 30px;
+          right: -11px;
+        }
+      }
+    }
+
+    a {
+      color: #b7b7b7;
+      font-size: 1rem;;
+      display: block;
+      text-decoration: none;
+    }
+
+    &.is-active {
+      a {
+        color: $primary-text-color;
+      }
+    }
+  }
+
+  &__rowIcons {
+    // margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__rowIcon {
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 0.5rem;
+    }
+
+    .icon-card {
+      width: 28px;
+
+      @include mq(tab) {
+        width: 32px;
+      }
+
+      g {
+        fill: $color-white;
+      }
+    }
+
+    .icon-media {
+      width: 28px;
+
+      @include mq(tab) {
+        width: 32px;
+      }
+    }
+
+    &.is-active {
+      .icon-card g {
+        fill: $accent-color;
+      }
+
+      .icon-media g {
+        fill: $accent-color;
+      }
+    }
+  }
+
+  &__contactContent {
+    margin-bottom: 2rem;
+
+    @include mq(lap) {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+
+      @include mq(lap) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+#lineup{
+    padding-top: 55px;
+    margin-top: -55px;
+    @include mq(lap) {
+      padding-top: initial;
+      margin-top: initial;
+    }
+}
+
+.cat-text.is-change {
+  margin-top: 0.5rem;
+}

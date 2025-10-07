@@ -1,0 +1,20 @@
+@use "sass:math";
+/*
+  Centering
+-----------------------------------------------------*/
+
+.l-container {
+  margin: 0 auto;
+  max-width: $content-width;
+  width: 90%;
+
+  position: relative;
+
+  &.-sizeS {
+    max-width: 1040px;
+  }
+}
+
+.l-button-wrap {
+  text-align: center;
+}
